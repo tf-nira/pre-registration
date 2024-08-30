@@ -21,4 +21,32 @@ public class DocumentIdentity {
 	/** Proof of Relation. */
 	private IdentityJsonValues por;
 
+	/** Proof of Legal Documents. */
+//	private IdentityJsonValues pold;
+	/** Proof of payment. */
+	private IdentityJsonValues popmt;
+	/** Proof of replacement. */
+	private IdentityJsonValues porep;
+	/** Proof of registration. */
+	private IdentityJsonValues poreg;
+	/** Proof of signature. */
+	private IdentityJsonValues pos;
+	/** Proof of change of particulars. */
+	private IdentityJsonValues pocp;
+	/** Proof of adoption. */
+	private IdentityJsonValues poadtn;
+	/** Proof of citizenship. */
+	private IdentityJsonValues poc;
+	/** Proof of Declarant. */
+	private IdentityJsonValues pod;
+	/** Proof of Legal Gazzeete. */
+	private IdentityJsonValues polg;
+	/** Proof of Legal Statutory Declaration. */
+	private IdentityJsonValues polsd;
+	/** Proof of Legal Deep Poll. */
+	private IdentityJsonValues poldp;
+
+	/** Proof of court Order. */
+	private IdentityJsonValues poco;
+
 }

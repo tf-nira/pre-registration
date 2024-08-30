@@ -22,7 +22,19 @@ public enum RequestCodes {
 	POI("POI"),
 	POR("POR"),
 	POD("POD"),
-	POB("POB");
+	POB("POB"),
+	POLG("POLG"),
+	POLSD("POLSD"),
+	POLDP("POLDP"),
+	POPMT("POPMT"),
+	POREP("POREP"),
+	POREG("POREG"),
+	POSIG("POS"),
+	POCP("POCP"),
+	POADTN("POADTN"),
+	POC("POC"),
+	POE("POE"),
+	POCO("POCO");
 	
 	/**
 	 * @param code

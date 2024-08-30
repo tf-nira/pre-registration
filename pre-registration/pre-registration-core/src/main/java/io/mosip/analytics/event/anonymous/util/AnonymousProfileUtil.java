@@ -183,6 +183,10 @@ public class AnonymousProfileUtil {
 						getValueFromDemographicData(identityMapping.getDob().getValue(), identityData)));
 				registrationProfile
 						.setGender(getValueFromDemographicData(identityMapping.getGender().getValue(), identityData));
+
+				registrationProfile
+						.setApplicantCitizenshipType(getValueFromDemographicData(identityMapping.getApplicantCitizenshipType().getValue(), identityData));
+
 				registrationProfile.setPreferredLanguage(
 						getValueFromDemographicData(identityMapping.getPreferredLanguage().getValue(), identityData));
 				if (!isNull(bookingData)) {

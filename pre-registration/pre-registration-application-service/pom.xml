@@ -48,6 +48,36 @@
 			<version>0.6.0</version>
 		</dependency>
 		<dependency>
+			<groupId>io.mosip.kernel</groupId>
+			<artifactId>kernel-auth-adapter</artifactId>
+			<version>1.2.0.1-B2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.mosip.kernel/kernel-core -->
+		<dependency>
+			<groupId>io.mosip.kernel</groupId>
+			<artifactId>kernel-core</artifactId>
+			<version>1.2.0.1-B2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.mosip.kernel/kernel-virusscanner-clamav -->
+		<dependency>
+			<groupId>io.mosip.kernel</groupId>
+			<artifactId>kernel-virusscanner-clamav</artifactId>
+			<version>1.2.0.1-B2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.mosip.kernel/kernel-transliteration-icu4j -->
+		<dependency>
+			<groupId>io.mosip.kernel</groupId>
+			<artifactId>kernel-transliteration-icu4j</artifactId>
+			<version>1.2.0.1-B2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.mosip.kernel/kernel-ref-idobjectvalidator -->
+		<dependency>
+			<groupId>io.mosip.kernel</groupId>
+			<artifactId>kernel-ref-idobjectvalidator</artifactId>
+			<version>1.2.0.1-B2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
 			<version>2.1</version>

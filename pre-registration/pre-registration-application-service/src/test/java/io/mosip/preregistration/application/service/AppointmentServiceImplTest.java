@@ -538,7 +538,7 @@ public class AppointmentServiceImplTest {
 		applicationEntity.setApplicationId("98765432");
 		applicationEntity.setAppointmentDate(LocalDate.now());
 		applicationEntity.setBookingDate(LocalDate.now());
-		applicationEntity.setBookingType(BookingTypeCodes.UPDATE_REGISTRATION.toString());
+		applicationEntity.setBookingType(BookingTypeCodes.UPDATE.toString());
 		applicationEntity.setBookingStatusCode("PENDING_APPOINTMENT");
 		Mockito.when(applicationRepostiory.getOne(Mockito.any())).thenReturn(applicationEntity);
 		Mockito.when(applicationRepostiory.save(applicationEntity)).thenReturn(applicationEntity);

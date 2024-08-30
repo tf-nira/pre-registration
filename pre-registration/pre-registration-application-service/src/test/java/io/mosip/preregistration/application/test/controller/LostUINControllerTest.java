@@ -112,7 +112,7 @@ public class LostUINControllerTest {
 	@Test
 	public void deleteLostUinApplicationTest() throws Exception {
 		String applicationId = "123456789";
-		String bookingType = BookingTypeCodes.LOST_FORGOTTEN_UIN.toString();
+		String bookingType = BookingTypeCodes.LOST.toString();
 		MainResponseDTO<DeleteApplicationDTO> response = new MainResponseDTO<DeleteApplicationDTO>();
 		response.setId(deleteId);
 		Mockito.when(applicationService.deleteLostOrUpdateApplication(applicationId, bookingType)).thenReturn(response);

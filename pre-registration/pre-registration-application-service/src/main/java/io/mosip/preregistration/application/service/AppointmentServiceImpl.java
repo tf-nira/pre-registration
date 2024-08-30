@@ -190,7 +190,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 						"In appointment booked successfully , updating the applications and demographic tables for ID:{}",
 						preRegistrationId);
 				ApplicationEntity applicationEntity = this.updateApplicationEntity(preRegistrationId, bookingDTO.getRequest(), StatusCodes.BOOKED.getCode());
-				if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW_PREREGISTRATION.toString())) {
+				if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW.toString())) {
 					createAnonymousProfile(userAgent, preRegistrationId, bookingDTO.getRequest());
 					this.demographicService.updatePreRegistrationStatus(preRegistrationId, StatusCodes.BOOKED.getCode(),
 						authUserDetails().getUserId());
@@ -249,7 +249,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 						"In appointment deleted successfully for ID:{}, updating the applications and demographic tables",
 						preRegistrationId);
 				ApplicationEntity applicationEntity = this.updateApplicationEntity(preRegistrationId, null, StatusCodes.CANCELLED.getCode());
-				if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW_PREREGISTRATION.toString())) {	
+				if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW.toString())) {
 					this.demographicService.updatePreRegistrationStatus(preRegistrationId, StatusCodes.CANCELLED.getCode(),
 						authUserDetails().getUserId());
 				}
@@ -278,7 +278,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 				log.info("In appointment cancelled successfully , updating the applications and demographic tables",
 						preRegistrationId);
 				ApplicationEntity applicationEntity = this.updateApplicationEntity(preRegistrationId, null, StatusCodes.CANCELLED.getCode());
-				if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW_PREREGISTRATION.toString())) {	
+				if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW.toString())) {
 					this.demographicService.updatePreRegistrationStatus(preRegistrationId, StatusCodes.CANCELLED.getCode(),
 						authUserDetails().getUserId());
 				}
@@ -318,7 +318,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 					bookRequest.setSlotToTime(action.getSlotToTime());
 					bookRequest.setSlotFromTime(action.getSlotFromTime());
 					ApplicationEntity applicationEntity = this.updateApplicationEntity(preRegistrationId, bookRequest, StatusCodes.BOOKED.getCode());
-					if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW_PREREGISTRATION.toString())) {	
+					if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW.toString())) {
 						createAnonymousProfile(userAgent, preRegistrationId, bookRequest);
 						this.demographicService.updatePreRegistrationStatus(preRegistrationId, StatusCodes.BOOKED.getCode(),
 							authUserDetails().getUserId());
@@ -381,9 +381,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 			applicationEntity.setSlotFromTime(null);
 			applicationEntity.setSlotToTime(null);
 			applicationEntity.setRegistrationCenterId(null);
-			if ((applicationEntity.getBookingType().equals(BookingTypeCodes.LOST_FORGOTTEN_UIN.toString())
+			if ((applicationEntity.getBookingType().equals(BookingTypeCodes.LOST.toString())
 					|| applicationEntity.getBookingType()
-							.equals(BookingTypeCodes.UPDATE_REGISTRATION.toString()))
+							.equals(BookingTypeCodes.UPDATE.toString()))
 					&& newStatus != null) {
 				applicationEntity.setBookingStatusCode(newStatus);
 			}
@@ -395,9 +395,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 			applicationEntity.setSlotToTime(
 					LocalTime.parse(bookingInfo.getSlotToTime(), DateTimeFormatter.ofPattern("H:mm:ss")));
 			applicationEntity.setRegistrationCenterId(bookingInfo.getRegistrationCenterId());
-			if ((applicationEntity.getBookingType().equals(BookingTypeCodes.LOST_FORGOTTEN_UIN.toString())
+			if ((applicationEntity.getBookingType().equals(BookingTypeCodes.LOST.toString())
 					|| applicationEntity.getBookingType()
-							.equals(BookingTypeCodes.UPDATE_REGISTRATION.toString()))
+							.equals(BookingTypeCodes.UPDATE.toString()))
 					&& newStatus != null) {
 				applicationEntity.setBookingStatusCode(newStatus);
 			}

@@ -294,7 +294,7 @@ public class ApplicationServiceTest {
 		Mockito.when(applicationRepository.findByCreatedByBookingType(Mockito.any(), Mockito.any()))
 				.thenReturn(applicationEntities);
 		MainResponseDTO<ApplicationsListDTO> response = applicationService
-				.getAllApplicationsForUserForBookingType(BookingTypeCodes.NEW_PREREGISTRATION.toString());
+				.getAllApplicationsForUserForBookingType(BookingTypeCodes.NEW.toString());
 		Assert.assertEquals("1234567890", response.getResponse().getAllApplications().get(0).getApplicationId());
 	}
 
@@ -342,7 +342,7 @@ public class ApplicationServiceTest {
 		Mockito.when(serviceUtil.findApplicationById(Mockito.any())).thenReturn(applicationEntity);
 		Mockito.when(validationUtil.requstParamValidator(Mockito.any())).thenReturn(true);
 		assertNotNull(applicationService.deleteLostOrUpdateApplication(applicationId,
-				BookingTypeCodes.LOST_FORGOTTEN_UIN.toString()));
+				BookingTypeCodes.LOST.toString()));
 	}
 
 	@Test
@@ -366,7 +366,7 @@ public class ApplicationServiceTest {
 		Mockito.when(serviceUtil.findApplicationById(Mockito.any())).thenReturn(applicationEntity);
 		Mockito.when(validationUtil.requstParamValidator(Mockito.any())).thenReturn(true);
 		assertNotNull(applicationService.deleteLostOrUpdateApplication(applicationId,
-				BookingTypeCodes.LOST_FORGOTTEN_UIN.toString()));
+				BookingTypeCodes.LOST.toString()));
 	}
 
 	@Test(expected = PreIdInvalidForUserIdException.class)
@@ -390,7 +390,7 @@ public class ApplicationServiceTest {
 		Mockito.when(serviceUtil.findApplicationById(Mockito.any())).thenReturn(applicationEntity);
 		Mockito.when(validationUtil.requstParamValidator(Mockito.any())).thenReturn(true);
 		assertNotNull(applicationService.deleteLostOrUpdateApplication(applicationId,
-				BookingTypeCodes.LOST_FORGOTTEN_UIN.toString()));
+				BookingTypeCodes.LOST.toString()));
 	}
 
 	@Test
@@ -398,7 +398,7 @@ public class ApplicationServiceTest {
 		String applicationId = "12345";
 		Mockito.when(validationUtil.requstParamValidator(Mockito.any())).thenReturn(true);
 		assertNotNull(applicationService.deleteLostOrUpdateApplication(applicationId,
-				BookingTypeCodes.UPDATE_REGISTRATION.toString()));
+				BookingTypeCodes.UPDATE.toString()));
 	}
 
 	@Test(expected = PreRegistrationException.class)
@@ -408,12 +408,12 @@ public class ApplicationServiceTest {
 
 	@Test(expected = PreRegistrationException.class)
 	public void testDeleteLostOrUpdateApplicationPreRegistrationException() {
-		applicationService.deleteLostOrUpdateApplication(null, BookingTypeCodes.LOST_FORGOTTEN_UIN.toString());
+		applicationService.deleteLostOrUpdateApplication(null, BookingTypeCodes.LOST.toString());
 	}
 
 	@Test(expected = PreRegistrationException.class)
 	public void testDeleteLostOrUpdateApplicationPreRegistrationException2() {
-		applicationService.deleteLostOrUpdateApplication(null, BookingTypeCodes.UPDATE_REGISTRATION.toString());
+		applicationService.deleteLostOrUpdateApplication(null, BookingTypeCodes.UPDATE.toString());
 	}
 
 	@Test(expected = InvalidDateFormatException.class)

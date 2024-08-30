@@ -377,10 +377,10 @@ public class ApplicationService implements ApplicationServiceIntf {
 		DeleteApplicationDTO deleteDto = new DeleteApplicationDTO();
 		Map<String, String> requestParamMap = new HashMap<>();
 		boolean isDeleteSuccess = false;
-		if (bookingType.equals(BookingTypeCodes.LOST_FORGOTTEN_UIN.toString())) {
+		if (bookingType.equals(BookingTypeCodes.LOST.toString())) {
 			response.setId(lostUinDeleteId);
 		}
-		if (bookingType.equals(BookingTypeCodes.UPDATE_REGISTRATION.toString())) {
+		if (bookingType.equals(BookingTypeCodes.UPDATE.toString())) {
 			response.setId(updateRegistrationDeleteId);
 		}
 		response.setVersion(version);
@@ -388,8 +388,8 @@ public class ApplicationService implements ApplicationServiceIntf {
 			requestParamMap.put(RequestCodes.APPLICATION_ID.getCode(), applicationId);
 			if (validationUtil.requstParamValidator(requestParamMap)) {
 				ApplicationEntity applicationEntity = serviceUtil.findApplicationById(applicationId);
-				if (bookingType.equals(BookingTypeCodes.LOST_FORGOTTEN_UIN.toString())
-						|| bookingType.equals(BookingTypeCodes.UPDATE_REGISTRATION.toString())) {
+				if (bookingType.equals(BookingTypeCodes.LOST.toString())
+						|| bookingType.equals(BookingTypeCodes.UPDATE.toString())) {
 					//userValidation(applicationEntity);
 					if (!authUserDetails().getUserId().trim().equals(applicationEntity.getCrBy().trim())) {
 						throw new PreIdInvalidForUserIdException(ApplicationErrorCodes.PRG_APP_015.getCode(),
@@ -543,9 +543,9 @@ public class ApplicationService implements ApplicationServiceIntf {
 		response.setVersion(version);
 		response.setResponsetime(DateTimeFormatter.ofPattern(mosipDateTimeFormat).format(LocalDateTime.now()));
 		try {
-			if (!type.equalsIgnoreCase(BookingTypeCodes.NEW_PREREGISTRATION.toString())
-					&& !type.equalsIgnoreCase(BookingTypeCodes.LOST_FORGOTTEN_UIN.toString())
-					&& !type.equalsIgnoreCase(BookingTypeCodes.UPDATE_REGISTRATION.toString())) {
+			if (!type.equalsIgnoreCase(BookingTypeCodes.NEW.toString())
+					&& !type.equalsIgnoreCase(BookingTypeCodes.LOST.toString())
+					&& !type.equalsIgnoreCase(BookingTypeCodes.UPDATE.toString())) {
 				throw new InvalidPreRegistrationIdException(ApplicationErrorCodes.PRG_APP_016.getCode(),
 						ApplicationErrorMessages.INVALID_BOOKING_TYPE.getMessage());
 

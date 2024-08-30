@@ -2,11 +2,13 @@ package io.mosip.preregistration.core.code;
 
 public enum BookingTypeCodes {
 
-	NEW_PREREGISTRATION("NEW_PREREGISTRATION"),
+	NEW("NEW"),
 
-	UPDATE_REGISTRATION("UPDATE_REGISTRATION"),
+	RENEWAL("RENEWAL"),
 
-	LOST_FORGOTTEN_UIN("LOST_FORGOTTEN_UIN");
+	UPDATE("UPDATE"),
+
+	LOST("LOST");
 
 	BookingTypeCodes(String bookingTypeCode) {
 		this.bookingTypeCode = bookingTypeCode;

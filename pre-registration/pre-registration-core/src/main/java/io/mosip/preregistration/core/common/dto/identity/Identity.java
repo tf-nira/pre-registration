@@ -48,4 +48,7 @@ public class Identity implements Serializable {
 	/** The email. */
 	private IdentityJsonValues email;
 
+	/** The citizenshipType. */
+	private IdentityJsonValues applicantCitizenshipType;
+
 }

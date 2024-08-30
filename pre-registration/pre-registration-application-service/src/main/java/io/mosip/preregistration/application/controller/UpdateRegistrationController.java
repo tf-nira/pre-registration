@@ -85,7 +85,7 @@ public class UpdateRegistrationController {
 		requestValidator.validateId(UPDATE_REGISTRATION_CREATE_ID, jsonObject.getId(), errors);
 		DataValidationUtil.validate(errors, UPDATE_REGISTRATION_CREATE_ID);
 		return ResponseEntity.status(HttpStatus.OK).body(applicationService.addLostOrUpdateApplication(jsonObject,
-				BookingTypeCodes.UPDATE_REGISTRATION.toString()));
+				BookingTypeCodes.UPDATE.toString()));
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class UpdateRegistrationController {
 				"In pre-registration LostUINController for deleteApplication with preId " + applicationId);
 
 		return ResponseEntity.status(HttpStatus.OK).body(applicationService.deleteLostOrUpdateApplication(applicationId,
-				BookingTypeCodes.UPDATE_REGISTRATION.toString()));
+				BookingTypeCodes.UPDATE.toString()));
 	}
 
 }

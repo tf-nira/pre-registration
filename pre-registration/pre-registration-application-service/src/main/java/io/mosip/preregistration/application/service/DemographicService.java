@@ -151,9 +151,15 @@ public class DemographicService implements DemographicServiceIntf {
 	@Autowired
 	ValidationUtil validationUtil;
 
+
+
+
 	/**
 	 * Reference for ${document.resource.url} from property file
 	 */
+
+	@Autowired
+	NotificationService notificationService;
 	@Value("${document.resource.url}")
 	private String docResourceUrl;
 
@@ -229,6 +235,8 @@ public class DemographicService implements DemographicServiceIntf {
 	@Value("${mosip.utc-datetime-pattern}")
 	private String dateFormat;
 
+	@Value("${mosip.pre-registration.notification.id}")
+	private String preRegistrationNotificationId;
 	@Value("${preregistration.config.identityjson}")
 	private String preregistrationIdJson;
 	/**
@@ -347,6 +355,16 @@ public class DemographicService implements DemographicServiceIntf {
 			mainResponseDTO.setResponsetime(serviceUtil.getCurrentResponseTime());
 			log.info("sessionId", "idType", "id",
 					"Pre Registration end time : " + DateUtils.getUTCCurrentDateTimeString());
+
+
+
+			request.setId(preRegistrationNotificationId);
+			String jsonString = objectMapper.writeValueAsString(request);
+			notificationService.sendNotification(jsonString, request.getRequest().getLangCode(), null, false, preId);
+
+			//preRegistrationNotificationId => mosip.pre-registration.notification.id: mosip.pre-registration.notification.notify
+
+
 		} catch (HttpServerErrorException | HttpClientErrorException e) {
 			log.error("sessionId", "idType", "id", ExceptionUtils.getStackTrace(e));
 			log.error("sessionId", "idType", "id",
@@ -714,7 +732,7 @@ public class DemographicService implements DemographicServiceIntf {
 			if (validationUtil.requstParamValidator(requestParamMap)) {
 				ApplicationEntity applicationEntity = serviceUtil.findApplicationById(preregId);
 				String bookingType = applicationEntity.getBookingType();
-				if (bookingType.equals(BookingTypeCodes.NEW_PREREGISTRATION.toString())) {
+				if (bookingType.equals(BookingTypeCodes.NEW.toString())) {
 					DemographicEntity demographicEntity = demographicRepository.findBypreRegistrationId(preregId);
 					if (!serviceUtil.isNull(demographicEntity)) {
 						userValidation(userId, demographicEntity.getCreatedBy());

@@ -34,6 +34,18 @@ public class PreRegArchiveDTO {
 	@ApiModelProperty(value = "zip-bytes", position = 7)
 	private byte[] zipBytes;
 
+	@JsonProperty("bookingType")
+	@ApiModelProperty(value = "bookingType", position = 8)
+	private String bookingType;
+
+	public String getBookingType() {
+		return bookingType;
+	}
+
+	public void setBookingType(String bookingType) {
+		this.bookingType = bookingType;
+	}
+
 	public String getPreRegistrationId() {
 		return preRegistrationId;
 	}
@@ -89,6 +101,6 @@ public class PreRegArchiveDTO {
 	public void setZipBytes(byte[] zipBytes) {
 		this.zipBytes =zipBytes!=null ? zipBytes.clone():null ;
 	}
-	
-	
+
+
 }

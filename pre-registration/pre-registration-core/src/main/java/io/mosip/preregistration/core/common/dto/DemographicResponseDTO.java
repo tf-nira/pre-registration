@@ -60,4 +60,6 @@ public class DemographicResponseDTO implements Serializable {
 	 */
 	private JSONObject demographicDetails;
 
+	private String bookingType;
+
 }

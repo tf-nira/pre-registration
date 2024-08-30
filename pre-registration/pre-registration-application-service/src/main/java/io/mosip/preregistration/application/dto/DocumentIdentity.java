@@ -21,4 +21,7 @@ public class DocumentIdentity {
 	/** Proof of Relation. */
 	private IdentityJsonValues por;
 
+	/** Proof of court Order. */
+	private IdentityJsonValues poco;
+
 }

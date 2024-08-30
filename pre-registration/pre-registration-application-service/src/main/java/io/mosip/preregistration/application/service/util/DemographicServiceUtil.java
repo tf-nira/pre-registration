@@ -157,6 +157,9 @@ public class DemographicServiceUtil {
 	 */
 	private ObjectMapper mapper;
 
+	@Value("${mosip.preregistration.identity.processflow}")
+	private String processFlow;
+
 	@PostConstruct
     public void init() {
 		mapper = JsonMapper.builder().addModule(new AfterburnerModule()).build();
@@ -184,6 +187,14 @@ public class DemographicServiceUtil {
 			createDto.setCreatedDateTime(getLocalDateString(demographicEntity.getCreateDateTime()));
 			createDto.setUpdatedBy(demographicEntity.getUpdatedBy());
 			createDto.setUpdatedDateTime(getLocalDateString(demographicEntity.getUpdateDateTime()));
+
+			ApplicationEntity applicationEntity = applicationRepostiory.findByApplicationId(demographicEntity.getPreRegistrationId());
+			if (applicationEntity == null) {
+				throw new RecordNotFoundException(ApplicationErrorCodes.PRG_APP_013.getCode(),
+						ApplicationErrorMessages.NO_RECORD_FOUND.getMessage());
+			} else {
+				createDto.setBookingType(applicationEntity.getBookingType());
+			}
 		} catch (ParseException ex) {
 			log.error("sessionId", "idType", "id", ExceptionUtils.getStackTrace(ex));
 			log.error("sessionId", "idType", "id",
@@ -273,7 +284,9 @@ public class DemographicServiceUtil {
 
 		log.info("sessionId", "idType", "id", "In prepareDemographicEntity method of pre-registration service util");
 		DemographicEntity demographicEntity = new DemographicEntity();
-		saveAndUpdateApplicationEntity(preRegistrationId, BookingTypeCodes.NEW_PREREGISTRATION.getBookingTypeCode(),
+		JSONObject jsonObject = demographicRequest.getDemographicDetails();
+		HashMap<String, Object> identityJson = (HashMap<String, Object>) jsonObject.get("identity");
+		saveAndUpdateApplicationEntity(preRegistrationId, BookingTypeCodes.valueOf(identityJson.get(processFlow).toString()).getBookingTypeCode(),
 				ApplicationStatusCode.DRAFT.getApplicationStatusCode(), StatusCodes.APPLICATION_INCOMPLETE.getCode(),
 				userId);
 		demographicEntity.setPreRegistrationId(preRegistrationId);

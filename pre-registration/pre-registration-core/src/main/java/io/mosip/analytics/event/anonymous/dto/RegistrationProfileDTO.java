@@ -86,4 +86,10 @@ public class RegistrationProfileDTO {
 	 * The status of application of the Anonymous Registration Profile.
 	 */
 	private String status;
+
+
+	/**
+	 * The citizenshipType of application of the Anonymous Registration Profile.
+	 */
+	private String applicantCitizenshipType;
 }

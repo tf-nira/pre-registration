@@ -177,6 +177,86 @@ public class DataSyncServiceUtil {
 	private String podUrl;
 
 	/**
+	 * Reference for ${poldp.url} from property file
+	 */
+	@Value("${poldp.url}")
+	private String poldpUrl;
+
+	/**
+	 * Reference for ${polsd.url} from property file
+	 */
+	@Value("${polsd.url}")
+	private String polsdUrl;
+
+	/**
+	 * Reference for ${polg.url} from property file
+	 */
+	@Value("${polg.url}")
+	private String polgUrl;
+
+	/**
+	 * Reference for ${popmt.url} from property file
+	 */
+	@Value("${popmt.url}")
+	private String popmtUrl;
+
+	/**
+	 * Reference for ${porep.url} from property file
+	 */
+	@Value("${porep.url}")
+	private String porepUrl;
+
+	/**
+	 * Reference for ${poreg.url} from property file
+	 */
+	@Value("${poreg.url}")
+	private String poregUrl;
+
+	/**
+	 * Reference for ${posig.url} from property file
+	 */
+	@Value("${posig.url}")
+	private String posigUrl;
+
+	/**
+	 * Reference for ${pocp.url} from property file
+	 */
+	@Value("${pocp.url}")
+	private String pocpUrl;
+
+	/**
+	 * Reference for ${poadtn.url} from property file
+	 */
+	@Value("${poadtn.url}")
+	private String poadtnUrl;
+
+
+	/**
+	 * Reference for ${poc.url} from property file
+	 */
+	@Value("${poc.url}")
+	private String pocUrl;
+
+	/**
+	 * Reference for ${pob.url} from property file
+	 */
+	@Value("${pob.url}")
+	private String pobUrl;
+
+
+	/**
+	 * Reference for ${poe.url} from property file
+	 */
+	@Value("${poe.url}")
+	private String poeUrl;
+
+	/**
+	 * Reference for ${poco.url} from property file
+	 */
+	@Value("${poco.url}")
+	private String pocoUrl;
+
+	/**
 	 * Reference for ${booking.resource.url} from property file
 	 */
 	@Value("${booking.resource.url}")
@@ -530,6 +610,8 @@ public class DataSyncServiceUtil {
 		log.info("sessionId", "idType", "id", "In preparePreRegArchiveDTO method of datasync service util");
 		PreRegArchiveDTO preRegArchiveDTO = new PreRegArchiveDTO();
 		preRegArchiveDTO.setPreRegistrationId(preRegistrationDTO.getPreRegistrationId());
+		preRegArchiveDTO.setBookingType(preRegistrationDTO.getBookingType());
+
 		if (!Objects.isNull(bookingRegistrationDTO)) {
 			preRegArchiveDTO.setRegistrationCenterId(bookingRegistrationDTO.getRegistrationCenterId());
 			preRegArchiveDTO.setAppointmentDate(bookingRegistrationDTO.getRegDate());
@@ -616,10 +698,54 @@ public class DataSyncServiceUtil {
 					jsonObject.put(poiUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				} else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POR.getCode())) {
 					jsonObject.put(porUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-				} else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POD.getCode())
+
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POPMT.getCode())) {
+					jsonObject.put(popmtUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POREP.getCode())) {
+					jsonObject.put(porepUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POREG.getCode())) {
+					jsonObject.put(poregUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POSIG.getCode())) {
+					jsonObject.put(posigUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCP.getCode())) {
+					jsonObject.put(pocpUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POADTN.getCode())) {
+					jsonObject.put(poadtnUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POC.getCode())) {
+					jsonObject.put(pocUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POE.getCode())) {
+					jsonObject.put(poeUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLG.getCode())) {
+					jsonObject.put(polgUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLSD.getCode())) {
+					jsonObject.put(polsdUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLDP.getCode())) {
+					jsonObject.put(poldpUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCO.getCode())) {
+					jsonObject.put(pocoUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+
+				}
+
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POD.getCode())
 						|| documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POB.getCode())) {
 					jsonObject.put(podUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
+
 				DocumentDTO documentDTO = getDocBytesDetails(documentMultipartResponseDTO.getDocumentId(), preId);
 				if (documentDTO != null && documentDTO.getDocument() != null) {
 					inputFile.put(documentMultipartResponseDTO.getDocCatCode().concat("_")

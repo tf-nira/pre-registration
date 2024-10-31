@@ -23,14 +23,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
-@RequestMapping("/altcha/challenge") 
+@RequestMapping("/") 
 public class CaptchaController {
 	
 	@Value("${ALTCHA_HMAC_KEY:secret-key}") 
     private String hmacKey;
 	
 	@PermitAll
-	@GetMapping(path = "/generate")
+	@GetMapping(path = "altcha/challenge/generate")
 	@Operation(summary = "Generate Altcha Challenge", description = "Generate Altcha Challenge", tags = "captcha-controller")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "OK"),
@@ -51,7 +51,7 @@ public class CaptchaController {
         }
     }
 
-    @PostMapping("/verify")
+    @PostMapping("altcha/challenge/verify")
     @Operation(summary = "Verify Altcha Challenge", description = "Verify Altcha Challenge", tags = "captcha-controller")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "OK"),

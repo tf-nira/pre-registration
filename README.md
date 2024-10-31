@@ -13,7 +13,7 @@ Pre-registration module consists of the following services:
 5. Datasync
 
 ## Database
-See [DB guide](db_scripts/README.md)
+See [DB guide](db_scripts/README.md).
 
 ## Config-Server
 To run Pre-registration services, run [Config Server](https://docs.mosip.io/1.2.0/modules/module-configuration#config-server)

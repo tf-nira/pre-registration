@@ -133,6 +133,7 @@ public class TemplateUtil {
 		responseMap.put("Time", timeFormate.format(nowCountryTime));
 		responseMap.put("Appointmentdate", acknowledgementDTO.getAppointmentDate());
 		responseMap.put("Appointmenttime", acknowledgementDTO.getAppointmentTime());
+		responseMap.put("SERVICE", acknowledgementDTO.getUserService());
 		if (acknowledgementDTO.getRegistrationCenterName() != null) {
 			responseMap.put("RegistrationCenterName",
 					acknowledgementDTO.getRegistrationCenterName().stream()

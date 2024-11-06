@@ -63,4 +63,5 @@ public class NotificationDTO implements Serializable {
 	
 	private List<KeyValuePairDto<String,String>> address;
 	
+	private String userService;
 }

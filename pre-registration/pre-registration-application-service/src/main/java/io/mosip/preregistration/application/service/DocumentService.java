@@ -619,10 +619,10 @@ public class DocumentService implements DocumentServiceIntf {
 								serviceUtil.updateApplicationStatusToIncomplete(documentEntity.getDemographicEntity());
 							}
 						}
-						if (isMandatoryDocumentDeleted(demographicEntity)) {
-							log.info("mandatory document deleted");
-							serviceUtil.updateApplicationStatusToIncomplete(demographicEntity);
-						}
+//						if (isMandatoryDocumentDeleted(demographicEntity)) {
+//							log.info("mandatory document deleted");
+//							serviceUtil.updateApplicationStatusToIncomplete(demographicEntity);
+//						}
 					}
 					if (!isDeleted) {
 						throw new FSServerException(DocumentErrorCodes.PRG_PAM_DOC_006.toString(),

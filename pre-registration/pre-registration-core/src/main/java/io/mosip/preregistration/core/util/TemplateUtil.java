@@ -133,7 +133,17 @@ public class TemplateUtil {
 		responseMap.put("Time", timeFormate.format(nowCountryTime));
 		responseMap.put("Appointmentdate", acknowledgementDTO.getAppointmentDate());
 		responseMap.put("Appointmenttime", acknowledgementDTO.getAppointmentTime());
-		responseMap.put("SERVICE", acknowledgementDTO.getUserService());
+		String userService = acknowledgementDTO.getUserService();
+		if ("NEW".equals(userService)) {
+		    userService = "New Registration";
+		} else if ("LOST".equals(userService)) {
+		    userService = "Replacement Of Card";
+		} else if ("UPDATE".equals(userService)) {
+		    userService = "Change Of Particulars";
+		} else if ("RENEWAL".equals(userService)) {
+		    userService = "Renewal Of Card";
+		}
+		responseMap.put("SERVICE", userService);
 		if (acknowledgementDTO.getRegistrationCenterName() != null) {
 			responseMap.put("RegistrationCenterName",
 					acknowledgementDTO.getRegistrationCenterName().stream()

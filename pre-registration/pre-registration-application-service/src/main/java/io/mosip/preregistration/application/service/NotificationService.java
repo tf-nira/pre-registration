@@ -123,7 +123,10 @@ public class NotificationService {
 	private String email;
 
 	@Value("${preregistration.identity.name}")
-	private String fullName;
+	private String defaultFullName;
+	
+	@Value("${preregistration.identity.nameCop}")
+	private String defaultFullNameCop;
 
 	@Value("${preregistration.identity.phone}")
 	private String phone;
@@ -385,6 +388,16 @@ public class NotificationService {
 		List<KeyValuePairDto<String, String>> langaueNamePairs = new ArrayList<KeyValuePairDto<String, String>>();
 		List<KeyValuePairDto<String, String>> langaueNamePairsfullName = new ArrayList<KeyValuePairDto<String, String>>();
 		KeyValuePairDto<String, String> langaueNamePair = null;
+		String fullName;
+		String update = "UPDATE";
+		String userService = responseNode.get("userService").toString();
+		userService = userService.substring(1, userService.length() - 1);
+		if(userService.equalsIgnoreCase(update)){
+			fullName=defaultFullNameCop;
+		}
+		else {
+			fullName=defaultFullName;
+		}
 		for (String name : fullName.split(",")) {
 
 			JsonNode arrayNodecomma = responseNode.get(name);

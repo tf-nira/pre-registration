@@ -31,6 +31,18 @@ public class AnonymousProfileEntity implements Serializable {
 	/** Anonymous Profile JSON **/
 	@Column(name = "profile", nullable = false)
 	private String profile;
+	
+	@Column(name = "district")
+	private String district;
+	
+	@Column(name = "services")
+	private String services;
+	
+	@Column(name = "service_type")
+	private String service_type;
+	
+	@Column(name = "enrolment_office")
+	private String enrolment_office;
 
 	/** The created by. */
 	@Column(name = "cr_by")

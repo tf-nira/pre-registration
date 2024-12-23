@@ -108,8 +108,4 @@ public class RegistrationProfileDTO {
 	 */
 	private String service_type;
 
-	/**
-	 * The enrolment_office of application of the Anonymous Registration Profile.
-	 */
-	private String enrolment_office;
 }

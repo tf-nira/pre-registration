@@ -101,11 +101,11 @@ public class RegistrationProfileDTO {
 	/**
 	 * The services of application of the Anonymous Registration Profile.
 	 */
-	private String services;
+	private String service;
 
 	/**
 	 * The service_type of application of the Anonymous Registration Profile.
 	 */
-	private String service_type;
+	private String serviceType;
 
 }

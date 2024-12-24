@@ -199,8 +199,8 @@ public class AnonymousProfileUtil {
 				registrationProfile.setDocuments(getDocumentTypesList(documentsData));
 				registrationProfile.setStatus(demographicData.getStatusCode());
 				registrationProfile.setDistrict(getValueFromDemographicData(identityMapping.getApplicantPlaceOfResidenceDistrict().getValue(), identityData));
-				registrationProfile.setServices(getValueFromDemographicData(identityMapping.getUserService().getValue(), identityData));
-				registrationProfile.setService_type(getValueFromDemographicData(identityMapping.getUserServiceType().getValue(), identityData));
+				registrationProfile.setService(getValueFromDemographicData(identityMapping.getUserService().getValue(), identityData));
+				registrationProfile.setServiceType(getValueFromDemographicData(identityMapping.getUserServiceType().getValue(), identityData));
 				
 				RegistrationProfileDeviceDTO device = new RegistrationProfileDeviceDTO();
 				if (!isNull(browserData)) {

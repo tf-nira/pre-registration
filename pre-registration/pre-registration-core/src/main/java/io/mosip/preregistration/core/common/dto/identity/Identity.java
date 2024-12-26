@@ -50,5 +50,16 @@ public class Identity implements Serializable {
 
 	/** The citizenshipType. */
 	private IdentityJsonValues applicantCitizenshipType;
+	
+	/** The district. */
+	private IdentityJsonValues applicantPlaceOfResidenceDistrict;
+	
+	/** The Services */
+	private IdentityJsonValues userService;
+	
+   /** The ServiceType */
+	private IdentityJsonValues userServiceType;
+	
+	
 
 }

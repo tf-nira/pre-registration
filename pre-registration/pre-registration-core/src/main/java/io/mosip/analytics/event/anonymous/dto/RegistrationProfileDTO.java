@@ -92,4 +92,20 @@ public class RegistrationProfileDTO {
 	 * The citizenshipType of application of the Anonymous Registration Profile.
 	 */
 	private String applicantCitizenshipType;
+	
+	/**
+	 * The district of the Anonymous Registration Profile.
+	 */
+	private String district;
+
+	/**
+	 * The services of application of the Anonymous Registration Profile.
+	 */
+	private String service;
+
+	/**
+	 * The service_type of application of the Anonymous Registration Profile.
+	 */
+	private String serviceType;
+
 }

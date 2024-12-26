@@ -198,6 +198,10 @@ public class AnonymousProfileUtil {
 				registrationProfile.setChannel(getChannels(identityMapping, identityData));
 				registrationProfile.setDocuments(getDocumentTypesList(documentsData));
 				registrationProfile.setStatus(demographicData.getStatusCode());
+				registrationProfile.setDistrict(getValueFromDemographicData(identityMapping.getApplicantPlaceOfResidenceDistrict().getValue(), identityData));
+				registrationProfile.setService(getValueFromDemographicData(identityMapping.getUserService().getValue(), identityData));
+				registrationProfile.setServiceType(getValueFromDemographicData(identityMapping.getUserServiceType().getValue(), identityData));
+				
 				RegistrationProfileDeviceDTO device = new RegistrationProfileDeviceDTO();
 				if (!isNull(browserData)) {
 					device.setBrowser(browserData.getBrowserName());

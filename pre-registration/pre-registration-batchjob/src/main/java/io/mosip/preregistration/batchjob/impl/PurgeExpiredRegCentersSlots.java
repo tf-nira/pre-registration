@@ -77,13 +77,13 @@ public class PurgeExpiredRegCentersSlots {
 		List<RegistrationBookingEntity> regBookingEntityList = batchServiceDAO.findAllPreIdsByregID(regCenterId, LocalDate.now());
 		LOGGER.info(PreRegBatchContants.SESSIONID, PreRegBatchContants.PRE_REG_BATCH, PreRegBatchContants.EMPTY, 
 						"Total Number of bookings available for the reg center: " + regBookingEntityList.size());
-		regBookingEntityList.stream().forEach(bookedSlot -> {
-			cancelAndNotifyHelper.cancelAndNotifyApplicant(bookedSlot, PreRegBatchContants.EMPTY, cancelledTracker, notifierTracker);
-		});
-		int deletedSlots = batchServiceDAO.deleteAllSlotsByRegId(regCenterId, LocalDate.now());
-		LOGGER.info(PreRegBatchContants.SESSIONID, PreRegBatchContants.PRE_REG_BATCH, PreRegBatchContants.EMPTY, 
-												"Deleted All Slots for expired reg Center: " + regCenterId + 
-												", Deleted Slot Count: " + deletedSlots);
+		//regBookingEntityList.stream().forEach(bookedSlot -> {
+		//	cancelAndNotifyHelper.cancelAndNotifyApplicant(bookedSlot, PreRegBatchContants.EMPTY, cancelledTracker, notifierTracker);
+		//});
+		//int deletedSlots = batchServiceDAO.deleteAllSlotsByRegId(regCenterId, LocalDate.now());
+		//LOGGER.info(PreRegBatchContants.SESSIONID, PreRegBatchContants.PRE_REG_BATCH, PreRegBatchContants.EMPTY, 
+		//										"Deleted All Slots for expired reg Center: " + regCenterId + 
+		//										", Deleted Slot Count: " + deletedSlots);
 	}
     
 }

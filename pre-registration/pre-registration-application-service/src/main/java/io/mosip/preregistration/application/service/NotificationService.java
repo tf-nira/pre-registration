@@ -390,9 +390,10 @@ public class NotificationService {
 		KeyValuePairDto<String, String> langaueNamePair = null;
 		String fullName;
 		String update = "UPDATE";
+		String firstId = "FIRSTID";
 		String userService = responseNode.get("userService").toString();
 		userService = userService.substring(1, userService.length() - 1);
-		if(userService.equalsIgnoreCase(update)){
+		if(userService.equalsIgnoreCase(update) || userService.equalsIgnoreCase(firstId)){
 			fullName=defaultFullNameCop;
 		}
 		else {

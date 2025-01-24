@@ -8,7 +8,9 @@ public enum BookingTypeCodes {
 
 	UPDATE("UPDATE"),
 
-	LOST("LOST");
+	LOST("LOST"),
+	
+	FIRSTID("FIRSTID");
 
 	BookingTypeCodes(String bookingTypeCode) {
 		this.bookingTypeCode = bookingTypeCode;

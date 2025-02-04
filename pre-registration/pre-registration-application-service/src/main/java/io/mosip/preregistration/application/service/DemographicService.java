@@ -965,6 +965,10 @@ public class DemographicService implements DemographicServiceIntf {
 		ApplicantTypeRequestDTO applicantTypeRequest = serviceUtil.createApplicantTypeRequest(demographicEntity);
 
 		applicantTypeCode = serviceUtil.getApplicantypeCode(applicantTypeRequest);
+		
+		if (applicantTypeCode != null && applicantTypeCode.contains(",")) {
+		    applicantTypeCode = applicantTypeCode.split(",")[0].trim();
+		}
 
 		applicantValidDocuments = serviceUtil.getDocCatAndTypeForApplicantCode(applicantTypeCode,
 				demographicEntity.getLangCode());

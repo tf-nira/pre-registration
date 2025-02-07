@@ -45,8 +45,19 @@ public class DocumentIdentity {
 	private IdentityJsonValues polsd;
 	/** Proof of Legal Deep Poll. */
 	private IdentityJsonValues poldp;
-
 	/** Proof of court Order. */
 	private IdentityJsonValues poco;
+	/** proofOfOtherSupportingdocumentIssuedbyGovt. */
+	private IdentityJsonValues poosd;
+	/** proofOfOtherSupportingDocuments. */
+	private IdentityJsonValues posd;
+	/** proofOfPhysicalApplicationForm. */
+	private IdentityJsonValues popf;
+	/** proofOfAbandonment. */
+	private IdentityJsonValues poabd;
+	/** proofOfModificationConsent. */
+	private IdentityJsonValues pomc;
+	/** introducerProofOfSignature. */
+	private IdentityJsonValues pois;
 
 }

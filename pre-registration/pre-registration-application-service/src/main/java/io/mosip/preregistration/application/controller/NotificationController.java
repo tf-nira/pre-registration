@@ -67,8 +67,19 @@ public class NotificationController {
 		log.info("sessionId", "idType", "id",
 				"In notification controller for send notification with request notification dto  " + jsonbObject);
 		log.debug("sessionId", "idType", "id", res.getHeader("Cookie"));
-		return new ResponseEntity<>(notificationService.sendNotification(jsonbObject, langCode, file, false),
-				HttpStatus.OK);
+		try {
+			return new ResponseEntity<>(notificationService.sendNotification(jsonbObject, langCode, file, false),
+					HttpStatus.OK);
+		} catch (Exception ex) {			
+			log.error("sessionId", "idType", "id",
+					"Error occurred while sending the notifications " + ex.getMessage());
+			MainResponseDTO<NotificationResponseDTO> finalResponse = new MainResponseDTO<NotificationResponseDTO>();
+			NotificationResponseDTO response = new NotificationResponseDTO();
+			response.setMessage("Not sent succefully.");
+			finalResponse.setResponse(response);
+			return new ResponseEntity<>(finalResponse,HttpStatus.OK);
+
+		}
 	}
 
 	/**

@@ -360,7 +360,15 @@ public class DemographicService implements DemographicServiceIntf {
 
 			request.setId(preRegistrationNotificationId);
 			String jsonString = objectMapper.writeValueAsString(request);
-			notificationService.sendNotification(jsonString, request.getRequest().getLangCode(), null, false, preId);
+			//notificationService.sendNotification(jsonString, request.getRequest().getLangCode(), null, false, preId);
+			try {
+				notificationService.sendNotification(jsonString, request.getRequest().getLangCode(), null, false, preId);
+			} catch (Exception ex) {
+				log.error("sessionId", "idType", "id", ExceptionUtils.getStackTrace(ex));
+				log.error("sessionId", "idType", "id",
+						"Error at the time of notification " + ex.getMessage());
+
+			}
 
 			//preRegistrationNotificationId => mosip.pre-registration.notification.id: mosip.pre-registration.notification.notify
 

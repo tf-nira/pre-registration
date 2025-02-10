@@ -39,8 +39,8 @@ public enum RequestCodes {
 	POABD("POABD"),
 	POSD("POSD"),
 	POLC("POLC"),
-	POPC("POPC");
-	
+	POPC("POPC"),
+	POL("POL");
 	/**
 	 * @param code
 	 */

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
-
+//add
 @EnableCaching
 @SpringBootApplication
 @ComponentScan(basePackages = { "io.mosip.*", "${mosip.lang.traslate.adapter.impl.basepackage}" }, excludeFilters = {

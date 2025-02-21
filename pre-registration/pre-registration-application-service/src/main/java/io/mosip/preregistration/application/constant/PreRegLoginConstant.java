@@ -1,5 +1,5 @@
 package io.mosip.preregistration.application.constant;
-
+//added
 public class PreRegLoginConstant {
 
 	public static final String OTP_SMS_TEMPLATE = "pre.reg.login.otp.sms.template";

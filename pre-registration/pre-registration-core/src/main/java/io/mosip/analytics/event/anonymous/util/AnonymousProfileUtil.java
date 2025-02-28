@@ -57,7 +57,7 @@ public class AnonymousProfileUtil {
 
 	private static final String EMAIL = "email";
 
-	private static final String DATE_FORMAT_DEMOGRAPHIC_DATA = "yyyy/MM/dd";
+	private static final String DATE_FORMAT_DEMOGRAPHIC_DATA = "dd/MM/yyyy";
 
 	private static final String PREREGISTRATION_APP_NAME = "preregistration";
 

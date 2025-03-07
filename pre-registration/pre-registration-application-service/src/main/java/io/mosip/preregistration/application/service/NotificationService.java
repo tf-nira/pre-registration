@@ -92,6 +92,9 @@ public class NotificationService {
 	@Value("${appointmentResourse.url}")
 	private String appointmentResourseUrl;
 
+	@Value("${mosip.preregistration.notification.enable}")
+	private Boolean enabledNotification;
+	
 	private Logger log = LoggerConfiguration.logConfig(NotificationService.class);
 
 	Map<String, String> requiredRequestMap = new HashMap<>();
@@ -200,14 +203,29 @@ public class NotificationService {
 			if (validationUtil.requestValidator(validationUtil.prepareRequestMap(notificationReqDTO),
 					requiredRequestMap)) {
 				MainResponseDTO<DemographicResponseDTO> demoDetail = notificationDtoValidation(notificationDto, prid);
+				ObjectMapper objectMapper = new ObjectMapper();
+				objectMapper = JsonMapper.builder().addModule(new AfterburnerModule()).build();
+				objectMapper.registerModule(new JavaTimeModule());
+				
+				JsonNode responseNode = objectMapper
+				        .readTree(demoDetail.getResponse().getDemographicDetails().toJSONString());
+				responseNode = responseNode.get("identity");
+				String countryCode = responseNode.has("CountryCode") 
+				        ? responseNode.get("CountryCode").get(0).get("value").asText() 
+				        : null;
+				String residenceStatus = responseNode.has("residenceStatus") 
+				        ? responseNode.get("residenceStatus").get(0).get("value").asText() 
+				        : null;
 				if (notificationDto.isAdditionalRecipient()) {
 					log.info("sessionId", "idType", "id",
 							"In notification service of sendNotification if additionalRecipient is"
 									+ notificationDto.isAdditionalRecipient());
 					if (notificationDto.getMobNum() != null && !notificationDto.getMobNum().isEmpty()) {
 						if (validationUtil.phoneValidator(notificationDto.getMobNum())) {
+							if((countryCode.equalsIgnoreCase("UGA") && residenceStatus.equalsIgnoreCase("UGA"))) {
 						notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
 									prid,null);
+							}
 						} else {
 							throw new MandatoryFieldException(NotificationErrorCodes.PRG_PAM_ACK_007.getCode(),
 									NotificationErrorMessages.PHONE_VALIDATION_EXCEPTION.getMessage(), response);
@@ -215,8 +233,10 @@ public class NotificationService {
 					}
 					if (notificationDto.getEmailID() != null && !notificationDto.getEmailID().isEmpty()) {
 						if (validationUtil.emailValidator(notificationDto.getEmailID())) {
-						notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+							if((notificationDto.getUserService().equalsIgnoreCase("UPDATE") && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification ) {
+								notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 								prid,null);
+							} 
 						} else {
 							throw new MandatoryFieldException(NotificationErrorCodes.PRG_PAM_ACK_006.getCode(),
 									NotificationErrorMessages.EMAIL_VALIDATION_EXCEPTION.getMessage(), response);
@@ -346,7 +366,12 @@ public class NotificationService {
 					.readTree(responseEntity.getResponse().getDemographicDetails().toJSONString());
 
 			responseNode = responseNode.get(identity);
-
+			String countryCode = responseNode.has("CountryCode") 
+			        ? responseNode.get("CountryCode").get(0).get("value").asText() 
+			        : null;
+			String residenceStatus = responseNode.has("residenceStatus") 
+			        ? responseNode.get("residenceStatus").get(0).get("value").asText() 
+			        : null;
 			List<KeyValuePairDto<String, String>> langaueNamePairsfullName = new ArrayList<KeyValuePairDto<String, String>>();
 
 			langaueNamePairsfullName = getLangaueNamePairs(responseNode);
@@ -355,13 +380,16 @@ public class NotificationService {
 			if (responseNode.get(email) != null) {
 				String emailId = responseNode.get(email).asText();
 				notificationDto.setEmailID(emailId);
-				notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file, prid,bytes);
+				if((notificationDto.getUserService().equalsIgnoreCase("UPDATE") && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification ) {
+					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file, prid,bytes);
+				}
 			}
 			if (responseNode.get(phone) != null) {
 				String phoneNumber = responseNode.get(phone).asText();
 				notificationDto.setMobNum(phoneNumber);
-				notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file, prid,null);
-
+				if((countryCode.equalsIgnoreCase("UGA") && residenceStatus.equalsIgnoreCase("UGA"))) {
+					notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file, prid,null);
+				}
 			}
 			if (responseNode.get(email) == null && responseNode.get(phone) == null) {
 				log.info("sessionId", "idType", "id",

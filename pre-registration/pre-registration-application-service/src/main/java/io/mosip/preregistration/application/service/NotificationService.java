@@ -222,8 +222,11 @@ public class NotificationService {
 									+ notificationDto.isAdditionalRecipient());
 					if (notificationDto.getMobNum() != null && !notificationDto.getMobNum().isEmpty()) {
 						if (validationUtil.phoneValidator(notificationDto.getMobNum())) {
-							if((countryCode.equalsIgnoreCase("UGA") && residenceStatus.equalsIgnoreCase("UGA"))) {
-						notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
+							if ((notificationDto.getUserService().equalsIgnoreCase("LOST") || notificationDto.getUserService().equalsIgnoreCase("UPDATE")) && countryCode.equalsIgnoreCase("UGA")) {
+								notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
+									prid,null);
+							} else if((countryCode.equalsIgnoreCase("UGA") && residenceStatus!= null && residenceStatus.equalsIgnoreCase("UGA"))) {
+								notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
 									prid,null);
 							}
 						} else {
@@ -233,10 +236,13 @@ public class NotificationService {
 					}
 					if (notificationDto.getEmailID() != null && !notificationDto.getEmailID().isEmpty()) {
 						if (validationUtil.emailValidator(notificationDto.getEmailID())) {
-							if((notificationDto.getUserService().equalsIgnoreCase("UPDATE") && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification ) {
+							if(notificationDto.getUserService().equalsIgnoreCase("UPDATE") || enabledNotification ) {
 								notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 								prid,null);
-							} 
+							} else if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
+								notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+								prid,null);
+							}
 						} else {
 							throw new MandatoryFieldException(NotificationErrorCodes.PRG_PAM_ACK_006.getCode(),
 									NotificationErrorMessages.EMAIL_VALIDATION_EXCEPTION.getMessage(), response);
@@ -380,15 +386,23 @@ public class NotificationService {
 			if (responseNode.get(email) != null) {
 				String emailId = responseNode.get(email).asText();
 				notificationDto.setEmailID(emailId);
-				if((notificationDto.getUserService().equalsIgnoreCase("UPDATE") && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification ) {
-					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file, prid,bytes);
+				if(notificationDto.getUserService().equalsIgnoreCase("UPDATE") || enabledNotification ) {
+					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+							prid,bytes);
+				} else if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
+					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+							prid,bytes);
 				}
 			}
 			if (responseNode.get(phone) != null) {
 				String phoneNumber = responseNode.get(phone).asText();
 				notificationDto.setMobNum(phoneNumber);
-				if((countryCode.equalsIgnoreCase("UGA") && residenceStatus.equalsIgnoreCase("UGA"))) {
-					notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file, prid,null);
+				if ((notificationDto.getUserService().equalsIgnoreCase("LOST") || notificationDto.getUserService().equalsIgnoreCase("UPDATE")) && countryCode.equalsIgnoreCase("UGA")) {
+					notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
+							prid,null);
+				} else if((countryCode.equalsIgnoreCase("UGA") && residenceStatus!= null && residenceStatus.equalsIgnoreCase("UGA"))) {
+					notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
+							prid,null);
 				}
 			}
 			if (responseNode.get(email) == null && responseNode.get(phone) == null) {

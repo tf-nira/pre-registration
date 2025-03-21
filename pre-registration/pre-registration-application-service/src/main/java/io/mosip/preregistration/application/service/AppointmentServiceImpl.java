@@ -318,7 +318,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 					bookRequest.setSlotToTime(action.getSlotToTime());
 					bookRequest.setSlotFromTime(action.getSlotFromTime());
 					ApplicationEntity applicationEntity = this.updateApplicationEntity(preRegistrationId, bookRequest, StatusCodes.BOOKED.getCode());
-					if (applicationEntity.getBookingType().equals(BookingTypeCodes.NEW.toString())) {
+					if (!applicationEntity.getBookingType().isEmpty()) {
 						createAnonymousProfile(userAgent, preRegistrationId, bookRequest);
 						this.demographicService.updatePreRegistrationStatus(preRegistrationId, StatusCodes.BOOKED.getCode(),
 							authUserDetails().getUserId());

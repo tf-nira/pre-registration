@@ -438,8 +438,10 @@ public class DocumentService implements DocumentServiceIntf {
 			if (validationUtil.requstParamValidator(requestParamMap)
 					&& serviceUtil.getPreRegInfoRestService(preId) != null) {
 				List<DocumentEntity> documentEntities = documnetDAO.findBypreregId(preId);
-				responseDto.setResponse(createDocumentResponse(documentEntities));
-				responseDto.setResponsetime(serviceUtil.getCurrentResponseTime());
+				if(documentEntities != null) {
+					responseDto.setResponse(createDocumentResponse(documentEntities));
+					responseDto.setResponsetime(serviceUtil.getCurrentResponseTime());
+				}
 			}
 			isRetrieveSuccess = true;
 

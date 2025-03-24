@@ -43,10 +43,10 @@ public class DocumentDAO {
 		List<DocumentEntity> entityList = null;
 		try {
 			entityList = documentRepository.findByDemographicEntityPreRegistrationId(preId);
-//			if (serviceUtil.isNull(entityList)) {
-//				throw new DocumentNotFoundException(DocumentErrorCodes.PRG_PAM_DOC_005.toString(),
-//						DocumentStatusMessages.DOCUMENT_IS_MISSING.getMessage());
-//			}
+			if (serviceUtil.isNull(entityList)) {
+				throw new DocumentNotFoundException(DocumentErrorCodes.PRG_PAM_DOC_005.toString(),
+						DocumentStatusMessages.DOCUMENT_IS_MISSING.getMessage());
+			}
 		} catch (DataAccessLayerException ex) {
 			log.error("sessionId", "idType", "id", "In findBydocumentId method of DocumnetDAO - " + ex);
 			throw new TableNotAccessibleException(DocumentErrorCodes.PRG_PAM_DOC_012.toString(),

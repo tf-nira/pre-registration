@@ -107,5 +107,10 @@ public class RegistrationProfileDTO {
 	 * The service_type of application of the Anonymous Registration Profile.
 	 */
 	private String serviceType;
+	
+	/**
+	 * The tribe of application of the Anonymous Registration Profile.
+	 */
+	private String tribe;
 
 }

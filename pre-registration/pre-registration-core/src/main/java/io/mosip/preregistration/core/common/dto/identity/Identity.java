@@ -60,6 +60,7 @@ public class Identity implements Serializable {
    /** The ServiceType */
 	private IdentityJsonValues userServiceType;
 	
-	
+	/** The Tribe */
+	private IdentityJsonValues applicantPlaceOfOriginIndigenousCommunityTribe;
 
 }

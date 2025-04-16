@@ -59,5 +59,7 @@ public class DocumentIdentity {
 	private IdentityJsonValues pomc;
 	/** introducerProofOfSignature. */
 	private IdentityJsonValues pois;
+	/** proofOfNationalId. */
+	private IdentityJsonValues ponid;
 
 }

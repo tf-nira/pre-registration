@@ -1,4 +1,3 @@
-
 package io.mosip.preregistration.datasync.service.util;
 
 import java.io.ByteArrayOutputStream;
@@ -288,6 +287,9 @@ public class DataSyncServiceUtil {
 
 	@Value("${pol.url}")
 	private String polUrl;
+
+	@Value("${ponid.url}")
+	private String ponidUrl;
 
 	/**
 	 * Reference for ${booking.resource.url} from property file
@@ -810,6 +812,11 @@ public class DataSyncServiceUtil {
 
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POL.getCode())) {
 					jsonObject.put(polUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+
+				}
+
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.NID.getCode())) {
+					jsonObject.put(ponidUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 
 				}
 

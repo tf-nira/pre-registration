@@ -1,4 +1,3 @@
-
 package io.mosip.preregistration.datasync.service.util;
 
 import java.io.ByteArrayOutputStream;

@@ -41,7 +41,8 @@ public enum RequestCodes {
 	POLC("POLC"),
 	POPC("POPC"),
 	POL("POL"),
-	NID("NID");
+	NID("NID"),
+	PODMG("PODMG");
 	/**
 	 * @param code
 	 */

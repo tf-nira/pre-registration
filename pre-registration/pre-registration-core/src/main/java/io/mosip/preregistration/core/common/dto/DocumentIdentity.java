@@ -61,5 +61,7 @@ public class DocumentIdentity {
 	private IdentityJsonValues pois;
 	/** proofOfNationalId. */
 	private IdentityJsonValues ponid;
+	/** proofOfDamaged. */
+	private IdentityJsonValues podmg;
 
 }

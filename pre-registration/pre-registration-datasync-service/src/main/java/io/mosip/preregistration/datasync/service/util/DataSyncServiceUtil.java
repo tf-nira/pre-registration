@@ -290,6 +290,12 @@ public class DataSyncServiceUtil {
 
 	@Value("${ponid.url}")
 	private String ponidUrl;
+	
+	/**
+	 * Reference for ${poabd.url} from property file
+	 */
+	@Value("${podmg.url}")
+	private String podmgUrl;
 
 	/**
 	 * Reference for ${booking.resource.url} from property file
@@ -817,6 +823,11 @@ public class DataSyncServiceUtil {
 
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.NID.getCode())) {
 					jsonObject.put(ponidUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+
+				}
+				
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PODMG.getCode())) {
+					jsonObject.put(podmgUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 
 				}
 

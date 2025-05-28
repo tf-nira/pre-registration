@@ -292,11 +292,92 @@ public class DataSyncServiceUtil {
 	private String ponidUrl;
 	
 	/**
-	 * Reference for ${poabd.url} from property file
+	 * Reference for ${podmg.url} from property file
 	 */
 	@Value("${podmg.url}")
 	private String podmgUrl;
+	
+	@Value("${ponot.url}")
+	private String ponotUrl;
 
+	@Value("${podp.url}")
+	private String podpUrl;
+
+	@Value("${pocid.url}")
+	private String pocidUrl;
+
+	@Value("${poip.url}")
+	private String poipUrl;
+
+	@Value("${pobc.url}")
+	private String pobcUrl;
+
+	@Value("${poad.url}")
+	private String poadUrl;
+
+	@Value("${popass.url}")
+	private String popassUrl;
+
+	@Value("${povot.url}")
+	private String povotUrl;
+
+	@Value("${podri.url}")
+	private String podriUrl;
+
+	@Value("${pobap.url}")
+	private String pobapUrl;
+
+	@Value("${poor.url}")
+	private String poorUrl;
+
+	@Value("${polcl.url}")
+	private String polclUrl;
+
+	@Value("${posta.url}")
+	private String postaUrl;
+
+	@Value("${polcv.url}")
+	private String polcvUrl;
+
+	@Value("${porec.url}")
+	private String porecUrl;
+
+	@Value("${poos.url}")
+	private String poosUrl;
+
+	@Value("${postp.url}")
+	private String postpUrl;
+
+	@Value("${.url}")
+	private String Url;
+
+	@Value("${ponr.url}")
+	private String ponrUrl;
+
+	@Value("${pocr.url}")
+	private String pocrUrl;
+
+	@Value("${pocn.url}")
+	private String pocnUrl;
+
+	@Value("${pocd.url}")
+	private String pocdUrl;
+
+	@Value("${poda.url}")
+	private String podaUrl;
+
+	@Value("${pomcert.url}")
+	private String pomcertUrl;
+
+	@Value("${podna.url}")
+	private String podnaUrl;
+
+	@Value("${pobcbr.url}")
+	private String pobcbrUrl;
+
+	@Value("${pocrep.url}")
+	private String pocrepUrl;
+	
 	/**
 	 * Reference for ${booking.resource.url} from property file
 	 */
@@ -779,56 +860,114 @@ public class DataSyncServiceUtil {
 				}
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCO.getCode())) {
 					jsonObject.put(pocoUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POD.getCode())) {
 					jsonObject.put(podUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
-				
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POB.getCode())) {
 					jsonObject.put(pobUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-				
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POABD.getCode())) {
 					jsonObject.put(poabdUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-				
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POOSD.getCode())) {
 					jsonObject.put(poosdUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POSD.getCode())) {
 					jsonObject.put(posdUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLC.getCode())) {
 					jsonObject.put(polcUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POPC.getCode())) {
 					jsonObject.put(popcUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POL.getCode())) {
 					jsonObject.put(polUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.NID.getCode())) {
 					jsonObject.put(ponidUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
-				
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PODMG.getCode())) {
 					jsonObject.put(podmgUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PONOT.getCode())) {
+					jsonObject.put(ponotUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PODP.getCode())) {
+					jsonObject.put(podpUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCID.getCode())) {
+					jsonObject.put(pocidUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POIP.getCode())) {
+					jsonObject.put(poipUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POBC.getCode())) {
+					jsonObject.put(pobcUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POAD.getCode())) {
+					jsonObject.put(poadUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POPASS.getCode())) {
+					jsonObject.put(popassUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POVOT.getCode())) {
+					jsonObject.put(povotUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PODRI.getCode())) {
+					jsonObject.put(podriUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POBAP.getCode())) {
+					jsonObject.put(pobapUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POOR.getCode())) {
+					jsonObject.put(poorUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLCL.getCode())) {
+					jsonObject.put(polclUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POSTA.getCode())) {
+					jsonObject.put(postaUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLCV.getCode())) {
+					jsonObject.put(polcvUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POREC.getCode())) {
+					jsonObject.put(porecUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POOS.getCode())) {
+					jsonObject.put(poosUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POSTP.getCode())) {
+					jsonObject.put(postpUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PONR.getCode())) {
+					jsonObject.put(ponrUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCR.getCode())) {
+					jsonObject.put(pocrUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCN.getCode())) {
+					jsonObject.put(pocnUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCD.getCode())) {
+					jsonObject.put(pocdUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POMCERT.getCode())) {
+					jsonObject.put(pomcertUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PODA.getCode())) {
+					jsonObject.put(podaUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PODNA.getCode())) {
+					jsonObject.put(podnaUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POBCBR.getCode())) {
+					jsonObject.put(pobcbrUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCREP.getCode())) {
+					jsonObject.put(pocrepUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
 
 				DocumentDTO documentDTO = getDocBytesDetails(documentMultipartResponseDTO.getDocumentId(), preId);

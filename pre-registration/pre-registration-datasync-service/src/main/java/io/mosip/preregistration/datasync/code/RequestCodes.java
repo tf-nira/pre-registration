@@ -42,7 +42,34 @@ public enum RequestCodes {
 	POPC("POPC"),
 	POL("POL"),
 	NID("NID"),
-	PODMG("PODMG");
+	PODMG("PODMG"),
+	PONOT("PONOT"),
+	PODP("PODP"),
+	POCID("POCID"),
+	POIP("POIP"),
+	POBC("POBC"),
+	POAD("POAD"),
+	POPASS("POPASS"),
+	POVOT("POVOT"),
+	PODRI("PODRI"),
+	POBAP("POBAP"),
+	POOR("POOR"),
+	POLCL("POLCL"),
+	POSTA("POSTA"),
+	POLCV("POLCV"),
+	POREC("POREC"),
+	POOS("POOS"),
+	POSTP("POSTP"),
+	PONR("PONR"),
+	POCR("POCR"),
+	POCN("POCN"),
+	POCD("POCD"),
+	POMCERT("POMCERT"),
+	PODA("PODA"),
+	PODNA("PODNA"),
+	POBCBR("POBCBR"),
+	POCREP("POCREP");
+	
 	/**
 	 * @param code
 	 */

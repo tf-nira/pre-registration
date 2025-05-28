@@ -348,9 +348,6 @@ public class DataSyncServiceUtil {
 	@Value("${postp.url}")
 	private String postpUrl;
 
-	@Value("${.url}")
-	private String Url;
-
 	@Value("${ponr.url}")
 	private String ponrUrl;
 

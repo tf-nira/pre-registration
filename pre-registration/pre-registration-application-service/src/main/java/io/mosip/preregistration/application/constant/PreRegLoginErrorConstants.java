@@ -11,10 +11,10 @@ public enum PreRegLoginErrorConstants {
 
 	DATA_VALIDATION_FAILED("PRE-REG-OTP-406", "Input Data Validation Failed"),
 	TOKEN_GENERATION_FAILED("PRE-REG-OTP-407", "Token generation failed"),
-	MISSING_INPUT_PARAMETER("PRE-REG-OTP-405", "Missing Input Parameter - %s"),
-	BLOCKED_OTP_VALIDATE("PRE-REG-OTP-405", "Missing Input Parameter - %s"),
-	UNABLE_TO_PROCESS("PRE-REG-OTP-405", "Missing Input Parameter - %s"),
-	SERVER_ERROR("PRE-REG-OTP-405", "Missing Input Parameter - %s"),
+	MISSING_INPUT_PARAMETER("PRE-REG-OTP-405", "OTP could not be generated. Please try again in a moment."),
+	BLOCKED_OTP_VALIDATE("PRE-REG-OTP-405", "OTP could not be generated. Please try again in a moment."),
+	UNABLE_TO_PROCESS("PRE-REG-OTP-405", "OTP could not be generated. Please try again in a moment."),
+	SERVER_ERROR("PRE-REG-OTP-405", "OTP could not be generated. Please try again in a moment."),
 	CAPTCHA_SEVER_ERROR("PRE-REG-CAP-102", "Captcha could not be validated"),
 	CAPTCHA_ERROR("PRE-REG-CAP-101", "Captcha token is empty");
 	

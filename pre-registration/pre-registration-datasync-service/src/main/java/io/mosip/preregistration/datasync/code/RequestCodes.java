@@ -68,7 +68,11 @@ public enum RequestCodes {
 	PODA("PODA"),
 	PODNA("PODNA"),
 	POBCBR("POBCBR"),
-	POCREP("POCREP");
+	POCREP("POCREP"),
+	POMED("POMED"),
+	POBAPP("POBAPP"),
+	POALL("POALL"),
+	POLR("POLR");
 	
 	/**
 	 * @param code

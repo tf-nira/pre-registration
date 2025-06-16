@@ -290,6 +290,18 @@ public class DataSyncServiceUtil {
 
 	@Value("${ponid.url}")
 	private String ponidUrl;
+
+	@Value("${pomed.url}")
+	private String pomedUrl;
+
+	@Value("${pobapp.url}")
+	private String pobappUrl;
+
+	@Value("${poall.url}")
+	private String poallUrl;
+
+	@Value("${polr.url}")
+	private String polrUrl;
 	
 	/**
 	 * Reference for ${podmg.url} from property file
@@ -965,6 +977,18 @@ public class DataSyncServiceUtil {
 				}
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCREP.getCode())) {
 					jsonObject.put(pocrepUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POMED.getCode())) {
+					jsonObject.put(pomedUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POBAPP.getCode())) {
+					jsonObject.put(pobappUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POALL.getCode())) {
+					jsonObject.put(poallUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLR.getCode())) {
+					jsonObject.put(polrUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
 
 				DocumentDTO documentDTO = getDocBytesDetails(documentMultipartResponseDTO.getDocumentId(), preId);

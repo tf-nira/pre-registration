@@ -161,6 +161,18 @@ public class DocumentIdentity {
 	
 	/** proofOfCourtOrder. */
 	private IdentityJsonValues pocrep;
+
+	/** proofOfCourtOrder. */
+	private IdentityJsonValues pomed;
+
+	/** proofOfCourtOrder. */
+	private IdentityJsonValues pobapp;
+
+	/** proofOfCourtOrder. */
+	private IdentityJsonValues poall;
+
+	/** proofOfCourtOrder. */
+	private IdentityJsonValues polr;
 	
 	
 }

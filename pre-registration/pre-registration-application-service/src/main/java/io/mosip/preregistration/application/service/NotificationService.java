@@ -434,9 +434,10 @@ public class NotificationService {
 		String update = "UPDATE";
 		String firstId = "FIRSTID";
 		String lost = "LOST";
+		String renewal = "RENEWAL";
 		String userService = responseNode.get("userService").toString();
 		userService = userService.substring(1, userService.length() - 1);
-		if(userService.equalsIgnoreCase(update) || userService.equalsIgnoreCase(firstId) || userService.equalsIgnoreCase(lost)){
+		if(userService.equalsIgnoreCase(update) || userService.equalsIgnoreCase(firstId) || userService.equalsIgnoreCase(lost) || userService.equalsIgnoreCase(renewal)){
 			fullName=defaultFullNameCop;
 		}
 		else {

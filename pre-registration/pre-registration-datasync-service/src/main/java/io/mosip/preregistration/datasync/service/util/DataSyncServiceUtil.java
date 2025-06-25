@@ -386,6 +386,33 @@ public class DataSyncServiceUtil {
 
 	@Value("${pocrep.url}")
 	private String pocrepUrl;
+
+	@Value("${poanid.url}")
+	private String poanidUrl;
+
+	@Value("${popnid.url}")
+	private String popnidUrl;
+
+	@Value("${ponpbr.url}")
+	private String ponpbrUrl;
+
+	@Value("${poclei.url}")
+	private String pocleiUrl;
+
+	@Value("${poppd.url}")
+	private String poppdUrl;
+
+	@Value("${poncert.url}")
+	private String poncertUrl;
+
+	@Value("${popir.url}")
+	private String popirUrl;
+
+	@Value("${popolrep.url}")
+	private String popolrepUrl;
+
+	@Value("${pofall.url}")
+	private String pofallUrl;
 	
 	/**
 	 * Reference for ${booking.resource.url} from property file
@@ -825,11 +852,12 @@ public class DataSyncServiceUtil {
 			for (DocumentMultipartResponseDTO documentMultipartResponseDTO : documentsMetaData.getDocumentsMetaData()) {
 				if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POA.getCode())) {
 					jsonObject.put(poaUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-				} else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POI.getCode())) {
+				} 
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POI.getCode())) {
 					jsonObject.put(poiUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-				} else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POR.getCode())) {
+				} 
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POR.getCode())) {
 					jsonObject.put(porUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
-
 				}
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POPMT.getCode())) {
 					jsonObject.put(popmtUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
@@ -846,7 +874,6 @@ public class DataSyncServiceUtil {
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCP.getCode())) {
 					jsonObject.put(pocpUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POADTN.getCode())) {
 					jsonObject.put(poadtnUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
@@ -856,14 +883,12 @@ public class DataSyncServiceUtil {
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POE.getCode())) {
 					jsonObject.put(poeUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLG.getCode())) {
 					jsonObject.put(polgUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLSD.getCode())) {
 					jsonObject.put(polsdUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
-
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLDP.getCode())) {
 					jsonObject.put(poldpUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
@@ -989,6 +1014,36 @@ public class DataSyncServiceUtil {
 				}
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLR.getCode())) {
 					jsonObject.put(polrUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POLR.getCode())) {
+					jsonObject.put(polrUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POANID.getCode())) {
+					jsonObject.put(poanidUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POPNID.getCode())) {
+					jsonObject.put(popnidUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PONPBR.getCode())) {
+					jsonObject.put(ponpbrUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCLEI.getCode())) {
+					jsonObject.put(pocleiUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POPPD.getCode())) {
+					jsonObject.put(poppdUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.PONCERT.getCode())) {
+					jsonObject.put(poncertUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POPIR.getCode())) {
+					jsonObject.put(popirUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POPOLREP.getCode())) {
+					jsonObject.put(popolrepUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POFALL.getCode())) {
+					jsonObject.put(pofallUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
 
 				DocumentDTO documentDTO = getDocBytesDetails(documentMultipartResponseDTO.getDocumentId(), preId);

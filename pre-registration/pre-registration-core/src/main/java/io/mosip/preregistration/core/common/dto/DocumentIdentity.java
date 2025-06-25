@@ -173,6 +173,24 @@ public class DocumentIdentity {
 
 	/** proofOfCourtOrder. */
 	private IdentityJsonValues polr;
+
+	private IdentityJsonValues poanid;
+
+	private IdentityJsonValues popnid;
+
+	private IdentityJsonValues ponpbr;
+
+	private IdentityJsonValues poclei;
+
+	private IdentityJsonValues poppd;
+
+	private IdentityJsonValues poncert;
+
+	private IdentityJsonValues popir;
+
+	private IdentityJsonValues popolrep;
+
+	private IdentityJsonValues pofall;
 	
 	
 }

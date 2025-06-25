@@ -72,8 +72,17 @@ public enum RequestCodes {
 	POMED("POMED"),
 	POBAPP("POBAPP"),
 	POALL("POALL"),
-	POLR("POLR");
-	
+	POLR("POLR"),
+	POANID("POANID"),
+	POPNID("POPNID"),
+	PONPBR("PONPBR"),
+	POCLEI("POCLEI"),
+	POPPD("POPPD"),
+	PONCERT("PONCERT"),
+	POPIR("POPIR"),
+	POPOLREP("POPOLREP"),
+	POFALL("POFALL");
+
 	/**
 	 * @param code
 	 */

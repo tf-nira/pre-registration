@@ -144,6 +144,8 @@ public class TemplateUtil {
 		    userService = "Renewal Of Card";
 		}else if ("FIRSTID".equals(userService)) {
 		    userService = "Get First ID";
+		}else if ("ALIENNEW".equals(userService)) {
+			userService = "Registration of Alien";
 		}
 		responseMap.put("SERVICE", userService);
 		if (acknowledgementDTO.getRegistrationCenterName() != null) {

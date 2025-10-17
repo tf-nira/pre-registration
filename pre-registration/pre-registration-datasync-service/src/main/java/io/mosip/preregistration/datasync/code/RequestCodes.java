@@ -81,7 +81,10 @@ public enum RequestCodes {
 	PONCERT("PONCERT"),
 	POPIR("POPIR"),
 	POPOLREP("POPOLREP"),
-	POFALL("POFALL");
+	POFALL("POFALL"),
+	POCIF("POCIF"),
+	POCOP("POCOP"),
+	POPR("POPR");
 
 	/**
 	 * @param code

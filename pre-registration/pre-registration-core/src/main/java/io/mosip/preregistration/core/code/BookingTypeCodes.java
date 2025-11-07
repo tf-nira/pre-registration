@@ -12,7 +12,9 @@ public enum BookingTypeCodes {
 
 	FIRSTID("FIRSTID"),
 
-	ALIENNEW("ALIENNEW");
+	ALIENNEW("ALIENNEW"),
+
+	ALIENRENEWAL("ALIENRENEWAL");
 
 	BookingTypeCodes(String bookingTypeCode) {
 		this.bookingTypeCode = bookingTypeCode;

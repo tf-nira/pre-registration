@@ -14,7 +14,9 @@ public enum BookingTypeCodes {
 
 	ALIENNEW("ALIENNEW"),
 
-	ALIENRENEWAL("ALIENRENEWAL");
+	ALIENRENEWAL("ALIENRENEWAL"),
+
+	ALIENLOST("ALIENLOST");
 
 	BookingTypeCodes(String bookingTypeCode) {
 		this.bookingTypeCode = bookingTypeCode;

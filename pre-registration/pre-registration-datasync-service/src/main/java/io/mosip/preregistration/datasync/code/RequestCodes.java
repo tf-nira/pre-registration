@@ -84,7 +84,8 @@ public enum RequestCodes {
 	POFALL("POFALL"),
 	POCIF("POCIF"),
 	POCOP("POCOP"),
-	POPR("POPR");
+	POPR("POPR"),
+	POAID("POAID");
 
 	/**
 	 * @param code

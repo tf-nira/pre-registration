@@ -197,5 +197,7 @@ public class DocumentIdentity {
 	private IdentityJsonValues pocop;
 	
 	private IdentityJsonValues popr;
+
+	private IdentityJsonValues poaid;
 	
 }

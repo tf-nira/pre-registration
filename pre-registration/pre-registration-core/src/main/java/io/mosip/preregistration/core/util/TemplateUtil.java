@@ -148,6 +148,8 @@ public class TemplateUtil {
 			userService = "Registration of Alien";
 		}else if ("ALIENRENEWAL".equals(userService)) {
 			userService = "Renewal of Alien";
+		}else if ("ALIENLOST".equals(userService)) {
+			userService = "Replacement of Alien";
 		}
 		responseMap.put("SERVICE", userService);
 		if (acknowledgementDTO.getRegistrationCenterName() != null) {

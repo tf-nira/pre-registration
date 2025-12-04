@@ -228,6 +228,9 @@ public class NotificationService {
 							} else if((countryCode.equalsIgnoreCase("UGA") && residenceStatus!= null && residenceStatus.equalsIgnoreCase("UGA"))) {
 								notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
 									prid,null);
+							}else if((countryCode.equalsIgnoreCase("UGA") && notificationDto.getUserService().toUpperCase().startsWith("ALIEN"))) {
+								notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
+										prid,null);
 							}
 						} else {
 							throw new MandatoryFieldException(NotificationErrorCodes.PRG_PAM_ACK_007.getCode(),
@@ -242,6 +245,9 @@ public class NotificationService {
 							} else if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
 								notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 								prid,null);
+							} else if((!countryCode.equalsIgnoreCase("UGA") && notificationDto.getUserService().toUpperCase().startsWith("ALIEN"))) {
+								notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+										prid,null);
 							}
 						} else {
 							throw new MandatoryFieldException(NotificationErrorCodes.PRG_PAM_ACK_006.getCode(),
@@ -392,6 +398,9 @@ public class NotificationService {
 				} else if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
 					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 							prid,bytes);
+				} else if((!countryCode.equalsIgnoreCase("UGA") && notificationDto.getUserService().toUpperCase().startsWith("ALIEN"))) {
+					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+							prid,bytes);
 				}
 			}
 			if (responseNode.get(phone) != null) {
@@ -401,6 +410,9 @@ public class NotificationService {
 					notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
 							prid,null);
 				} else if((countryCode.equalsIgnoreCase("UGA") && residenceStatus!= null && residenceStatus.equalsIgnoreCase("UGA"))) {
+					notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
+							prid,null);
+				} else if((countryCode.equalsIgnoreCase("UGA") && notificationDto.getUserService().toUpperCase().startsWith("ALIEN"))) {
 					notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
 							prid,null);
 				}

@@ -145,7 +145,7 @@ public class TemplateUtil {
 		}else if ("FIRSTID".equals(userService)) {
 		    userService = "Get First ID";
 		}else if ("ALIENNEW".equals(userService)) {
-			userService = "Registration of Alien";
+			userService = "Alien New Registration";
 		}else if ("ALIENRENEWAL".equals(userService)) {
 			userService = "Renewal of Alien";
 		}else if ("ALIENLOST".equals(userService)) {

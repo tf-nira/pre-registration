@@ -97,8 +97,8 @@ public class UISpecServiceTest {
 		jsonSpec.add(e);
 		uiSchema.setJsonSpec(jsonSpec);
 		uiSchemas.add(uiSchema);
-		Mockito.when(serviceUtil.getUISchema(Mockito.any(), Mockito.any())).thenReturn(uiSchemas);
-		MainResponseDTO<UISpecMetaDataDTO> response = uISpecService.getLatestUISpec(0, 0.0);
+		Mockito.when(serviceUtil.getUISchema(Mockito.any(), Mockito.any(), null)).thenReturn(uiSchemas);
+		MainResponseDTO<UISpecMetaDataDTO> response = uISpecService.getLatestUISpec(0, 0.0, null);
 		assertEquals(response.getResponse().getStatus(),"PUBLISHED");
 
 	}
@@ -114,8 +114,8 @@ public class UISpecServiceTest {
 		jsonSpec.add(e);
 		uiSchema.setJsonSpec(jsonSpec);
 		uiSchemas.add(uiSchema);
-		Mockito.when(serviceUtil.getUISchema(Mockito.any(), Mockito.any())).thenThrow(new UISpecException("ErrorCode","exception"));
-		MainResponseDTO<UISpecMetaDataDTO> response = uISpecService.getLatestUISpec(0, 0.0);
+		Mockito.when(serviceUtil.getUISchema(Mockito.any(), Mockito.any(),null)).thenThrow(new UISpecException("ErrorCode","exception"));
+		MainResponseDTO<UISpecMetaDataDTO> response = uISpecService.getLatestUISpec(0, 0.0,null);
 		assertEquals(response.getErrors().get(0).getMessage(),"ErrorCode --> exception");
 
 	}

@@ -341,6 +341,19 @@ public class DemographicService implements DemographicServiceIntf {
 			log.info("sessionId", "idType", "id",
 					"Pre ID generation start time : " + DateUtils.getUTCCurrentDateTimeString());
 			String preId = serviceUtil.generateId();
+
+			List<Map<String, Object>> userServiceType =
+					(List<Map<String, Object>>)
+							((Map<String, Object>)
+									((Map<String, Object>) demographicRequest.getDemographicDetails())
+											.get("identity"))
+									.get("userServiceType");
+
+			if ("CRVS".equalsIgnoreCase(userServiceType.get(0).get("value").toString())) {
+				preId = "CRVS" + preId;
+			}
+
+
 			log.info("sessionId", "idType", "id",
 					"Pre ID generation end time : " + DateUtils.getUTCCurrentDateTimeString());
 
@@ -402,7 +415,6 @@ public class DemographicService implements DemographicServiceIntf {
 
 	}
 
-	
 	/*
 	 * This method is used to update the demographic data by PreId
 	 * 

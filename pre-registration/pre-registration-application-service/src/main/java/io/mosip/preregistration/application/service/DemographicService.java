@@ -349,10 +349,9 @@ public class DemographicService implements DemographicServiceIntf {
 											.get("identity"))
 									.get("userServiceType");
 
-			if ("CRVS".equalsIgnoreCase(userServiceType.get(0).get("value").toString())) {
+			if (userServiceType != null && "CRVS".equalsIgnoreCase(userServiceType.get(0).get("value").toString())) {
 				preId = "CRVS" + preId;
 			}
-
 
 			log.info("sessionId", "idType", "id",
 					"Pre ID generation end time : " + DateUtils.getUTCCurrentDateTimeString());

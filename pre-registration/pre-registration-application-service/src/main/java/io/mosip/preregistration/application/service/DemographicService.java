@@ -350,7 +350,14 @@ public class DemographicService implements DemographicServiceIntf {
 									.get("userServiceType");
 
 			if (userServiceType != null && "CRVS".equalsIgnoreCase(userServiceType.get(0).get("value").toString())) {
-				preId = "CRVS" + preId;
+				List<Map<String, Object>> trackingId =
+						(List<Map<String, Object>>)
+								((Map<String, Object>)
+										((Map<String, Object>) demographicRequest.getDemographicDetails())
+												.get("identity"))
+										.get("trackingId");
+				String trackId=trackingId.get(0).get("value").toString();
+				preId = trackId +'-'+preId;
 			}
 
 			log.info("sessionId", "idType", "id",

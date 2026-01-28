@@ -342,22 +342,20 @@ public class DemographicService implements DemographicServiceIntf {
 					"Pre ID generation start time : " + DateUtils.getUTCCurrentDateTimeString());
 			String preId = serviceUtil.generateId();
 
-			List<Map<String, Object>> userServiceType =
-					(List<Map<String, Object>>)
-							((Map<String, Object>)
-									((Map<String, Object>) demographicRequest.getDemographicDetails())
-											.get("identity"))
-									.get("userServiceType");
+			Map<String, Object> demo = demographicRequest.getDemographicDetails();
+			if (demo != null && demo.get("identity") instanceof Map) {
+				Map<String, Object> identity = (Map<String, Object>) demo.get("identity");
 
-			if (userServiceType != null && "CRVS".equalsIgnoreCase(userServiceType.get(0).get("value").toString())) {
-				List<Map<String, Object>> trackingId =
-						(List<Map<String, Object>>)
-								((Map<String, Object>)
-										((Map<String, Object>) demographicRequest.getDemographicDetails())
-												.get("identity"))
-										.get("trackingId");
-				String trackId=trackingId.get(0).get("value").toString();
-				preId = trackId +'-'+preId;
+				Object trackingObj = identity.get("trackingId");
+				if (trackingObj instanceof List && !((List<?>) trackingObj).isEmpty()) {
+					List<Map<String, Object>> trackingId =
+							(List<Map<String, Object>>) trackingObj;
+
+					Object value = trackingId.get(0).get("value");
+					if (value != null) {
+						preId = value.toString() + "-" + preId;
+					}
+				}
 			}
 
 			log.info("sessionId", "idType", "id",

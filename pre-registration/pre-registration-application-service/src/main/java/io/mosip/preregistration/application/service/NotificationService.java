@@ -248,7 +248,7 @@ public class NotificationService {
 									if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
 										notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 												prid,null);
-									} else if((!countryCode.equalsIgnoreCase("UGA") && notificationDto.getUserService().toUpperCase().startsWith("ALIEN"))) {
+									} else if(notificationDto.getUserService().toUpperCase().startsWith("ALIEN")) {
 										notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 												prid,null);
 									}
@@ -410,7 +410,7 @@ public class NotificationService {
 						if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
 							notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 									prid,bytes);
-						} else if((!countryCode.equalsIgnoreCase("UGA") && notificationDto.getUserService().toUpperCase().startsWith("ALIEN"))) {
+						} else if(notificationDto.getUserService().toUpperCase().startsWith("ALIEN")) {
 							notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 									prid,bytes);
 						}

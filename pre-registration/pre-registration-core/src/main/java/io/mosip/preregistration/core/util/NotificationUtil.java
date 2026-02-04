@@ -366,6 +366,12 @@ public class NotificationUtil {
 		HttpEntity<RequestWrapper<SMSRequestDTO>> httpEntity = new HttpEntity<>(req, headers);
 		log.info("sessionId", "idType", "id",
 				"In smsNotification method of NotificationUtil service smsResourseUrl: " + smsResourseUrl);
+		log.info(
+				"In smsNotification | smsResourceUrl={} | headers={} | body={}",
+				smsResourseUrl,
+				headers,
+				req
+		);
 		resp = restTemplate.exchange(smsResourseUrl, HttpMethod.POST, httpEntity,
 				new ParameterizedTypeReference<ResponseWrapper<NotificationResponseDTO>>() {
 				});

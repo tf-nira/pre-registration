@@ -28,4 +28,16 @@ public enum BookingTypeCodes {
 		return bookingTypeCode;
 	}
 
+	public static BookingTypeCodes fromCode(String code) {
+		if (code == null) {
+			return null;
+		}
+		for (BookingTypeCodes type : values()) {
+			if (type.bookingTypeCode.equalsIgnoreCase(code)) {
+				return type;
+			}
+		}
+		return null;
+	}
+
 }

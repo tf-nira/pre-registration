@@ -21,7 +21,7 @@ on:
       - develop
       - MOSIP*
       - tf_nira_dev
-      - tf_nira_preprod
+      - tf_nira_prod
 
 jobs:
   build-maven-pre-registration:

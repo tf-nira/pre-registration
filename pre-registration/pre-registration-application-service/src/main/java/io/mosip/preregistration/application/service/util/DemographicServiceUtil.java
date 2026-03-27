@@ -880,7 +880,7 @@ public class DemographicServiceUtil {
 	public Set<String> getMandatoryDocCatogery() {
 		log.info("In mandatoryDocsCategory method ");
 		Set<String> mandatoryDocs = new HashSet<>();
-		MainResponseDTO<UISpecMetaDataDTO> uiSpec = uiSpecService.getLatestUISpec(0.0, 0.0);
+		MainResponseDTO<UISpecMetaDataDTO> uiSpec = uiSpecService.getLatestUISpec(0.0, 0.0,null);
 		uiSpec.getResponse().getJsonSpec().get("identity").get("identity").forEach(field -> {
 			if (field.get("controlType").asText().equals("fileupload")
 					&& Boolean.valueOf(field.get("required").asText())) {

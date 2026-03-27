@@ -757,8 +757,7 @@ public class DemographicService implements DemographicServiceIntf {
 			requestParamMap.put(DemographicRequestCodes.PRE_REGISTRAION_ID.getCode(), preregId);
 			if (validationUtil.requstParamValidator(requestParamMap)) {
 				ApplicationEntity applicationEntity = serviceUtil.findApplicationById(preregId);
-				String bookingType = applicationEntity.getBookingType();
-				if (bookingType.equals(BookingTypeCodes.NEW.toString())) {
+				if (BookingTypeCodes.fromCode(applicationEntity.getBookingType()) != null) {
 					DemographicEntity demographicEntity = demographicRepository.findBypreRegistrationId(preregId);
 					if (!serviceUtil.isNull(demographicEntity)) {
 						userValidation(userId, demographicEntity.getCreatedBy());

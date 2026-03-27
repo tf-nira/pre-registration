@@ -220,7 +220,7 @@ public class NotificationService {
 					log.info("sessionId", "idType", "id",
 							"In notification service of sendNotification if additionalRecipient is"
 									+ notificationDto.isAdditionalRecipient());
-					if (notificationDto.getMobNum() != null && !notificationDto.getMobNum().isEmpty()) {
+					if (notificationDto.getMobNum() != null && !notificationDto.getMobNum().isEmpty() && countryCode != null) {
 						if (validationUtil.phoneValidator(notificationDto.getMobNum())) {
 							if ((notificationDto.getUserService().equalsIgnoreCase("LOST") || notificationDto.getUserService().equalsIgnoreCase("UPDATE")) && countryCode.equalsIgnoreCase("UGA")) {
 								notificationUtil.notify(NotificationRequestCodes.SMS.getCode(), notificationDto, file,
@@ -242,12 +242,21 @@ public class NotificationService {
 							if(notificationDto.getUserService().equalsIgnoreCase("UPDATE") || enabledNotification ) {
 								notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 								prid,null);
-							} else if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
-								notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
-								prid,null);
-							} else if((!countryCode.equalsIgnoreCase("UGA") && notificationDto.getUserService().toUpperCase().startsWith("ALIEN"))) {
-								notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
-										prid,null);
+							}
+							else{
+								if(countryCode!=null){
+									if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
+										notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+												prid,null);
+									} else if(notificationDto.getUserService().toUpperCase().startsWith("ALIEN")) {
+										notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+												prid,null);
+									}
+								}
+								else{
+									notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+											prid,null);
+								}
 							}
 						} else {
 							throw new MandatoryFieldException(NotificationErrorCodes.PRG_PAM_ACK_006.getCode(),
@@ -395,15 +404,24 @@ public class NotificationService {
 				if(notificationDto.getUserService().equalsIgnoreCase("UPDATE") || enabledNotification ) {
 					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
 							prid,bytes);
-				} else if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
-					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
-							prid,bytes);
-				} else if((!countryCode.equalsIgnoreCase("UGA") && notificationDto.getUserService().toUpperCase().startsWith("ALIEN"))) {
-					notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
-							prid,bytes);
+				}
+				else{
+					if(countryCode!=null){
+						if(!countryCode.equalsIgnoreCase("UGA") || (residenceStatus!= null && residenceStatus.equalsIgnoreCase("FRN")) || enabledNotification){
+							notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+									prid,bytes);
+						} else if(notificationDto.getUserService().toUpperCase().startsWith("ALIEN")) {
+							notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+									prid,bytes);
+						}
+					}
+					else{
+						notificationUtil.notify(NotificationRequestCodes.EMAIL.getCode(), notificationDto, file,
+								prid,bytes);
+					}
 				}
 			}
-			if (responseNode.get(phone) != null) {
+			if (responseNode.get(phone) != null && countryCode!=null) {
 				String phoneNumber = responseNode.get(phone).asText();
 				notificationDto.setMobNum(phoneNumber);
 				if ((notificationDto.getUserService().equalsIgnoreCase("LOST") || notificationDto.getUserService().equalsIgnoreCase("UPDATE")) && countryCode.equalsIgnoreCase("UGA")) {

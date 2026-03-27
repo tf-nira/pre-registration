@@ -46,7 +46,7 @@ public class UISpecServiceUtil {
 
 	private final String domain = "pre-registration";
 
-	public List<UISpecResponseDTO> getUISchema(Double version, Double idSchemaVersion) {
+	public List<UISpecResponseDTO> getUISchema(Double version, Double idSchemaVersion, String type) {
 		log.info("In  UISpec serviceutil getUIschema method");
 		List<UISpecResponseDTO> response = null;
 		ResponseEntity<ResponseWrapper<List<UISpecResponseDTO>>> responseEntity = null;
@@ -59,6 +59,7 @@ public class UISpecServiceUtil {
 			MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 			params.add("version", version.toString());
 			params.add("identitySchemaVersion", idSchemaVersion.toString());
+			params.add("type", type);
 
 			String uriBuilder = regbuilder.queryParams(params).build().encode().toUriString();
 

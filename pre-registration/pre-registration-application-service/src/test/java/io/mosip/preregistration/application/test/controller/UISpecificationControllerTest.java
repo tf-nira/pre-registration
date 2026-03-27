@@ -59,7 +59,7 @@ public class UISpecificationControllerTest {
 
 		MainResponseDTO<UISpecMetaDataDTO> response = new MainResponseDTO<UISpecMetaDataDTO>();
 
-		Mockito.when(service.getLatestUISpec(Mockito.anyDouble(), Mockito.anyDouble())).thenReturn(response);
+		Mockito.when(service.getLatestUISpec(Mockito.anyDouble(), Mockito.anyDouble(), Mockito.eq(null))).thenReturn(response);
 
 		RequestBuilder request = MockMvcRequestBuilders.get("/uispec/latest");
 		mockmvc.perform(request).andExpect(MockMvcResultMatchers.status().isOk());

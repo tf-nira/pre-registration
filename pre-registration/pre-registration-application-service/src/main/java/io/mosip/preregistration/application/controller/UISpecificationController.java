@@ -41,10 +41,12 @@ public class UISpecificationController {
 			@ApiResponse(responseCode = "404", description = "Not Found" ,content = @Content(schema = @Schema(hidden = true)))})
 	public ResponseEntity<MainResponseDTO<UISpecMetaDataDTO>> getLatestPublishedSchema(
 			@RequestParam(name = "version", defaultValue = "0", required = false) @ApiParam(value = "version", defaultValue = "0") double version,
-			@RequestParam(name = "identitySchemaVersion", defaultValue = "0", required = false) @ApiParam(value = "version", defaultValue = "0") double identitySchemaVersion) {
+			@RequestParam(name = "identitySchemaVersion", defaultValue = "0", required = false) @ApiParam(value = "version", defaultValue = "0") double identitySchemaVersion,
+			@RequestParam(name = "type",required = false) @ApiParam(value = "type") String type) {
 		log.info("In UISpecification Controller to getLatestPublishedSchema");
 		log.info("version {} identitySchemaVersion {}", version, identitySchemaVersion);
-		return ResponseEntity.status(HttpStatus.OK).body(uiSpecService.getLatestUISpec(version, identitySchemaVersion));
+		log.info("type {}", type);
+		return ResponseEntity.status(HttpStatus.OK).body(uiSpecService.getLatestUISpec(version, identitySchemaVersion,type));
 	}
 
 	@PreAuthorize("hasAnyRole(@authorizedRoles.getGetuispecall())" )

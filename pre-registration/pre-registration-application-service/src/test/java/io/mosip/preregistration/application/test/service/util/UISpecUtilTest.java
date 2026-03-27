@@ -43,7 +43,7 @@ public class UISpecUtilTest {
 		uiSpecRes.setDescription("UI SPEC");
 		uiSpecRes.setJsonSpec(uispec);
 		
-		Mockito.when(util.getUISchema(0.0, 0.1)).thenReturn(res);
+		Mockito.when(util.getUISchema(0.0, 0.1,null)).thenReturn(res);
 
 	}
 	

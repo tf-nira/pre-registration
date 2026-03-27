@@ -46,16 +46,16 @@ public class UISpecService {
 
 	private final String domain = "pre-registration";
 
-	public MainResponseDTO<UISpecMetaDataDTO> getLatestUISpec(double version, double identitySchemaVersion) {
+	public MainResponseDTO<UISpecMetaDataDTO> getLatestUISpec(double version, double identitySchemaVersion, String type) {
 		log.info("In UISpec service getUIspec method");
 		MainResponseDTO<UISpecMetaDataDTO> response = new MainResponseDTO<UISpecMetaDataDTO>();
 		response.setVersion(this.version);
 		response.setResponsetime(DateTimeFormatter.ofPattern(mosipDateTimeFormat).format(LocalDateTime.now()));
 		try {
 			log.info("fetching the UiSpec version {} and identitySchemaVersion {}", version, identitySchemaVersion);
-			List<UISpecResponseDTO> uiSchema = serviceUtil.getUISchema(version, identitySchemaVersion);
+			List<UISpecResponseDTO> uiSchema = serviceUtil.getUISchema(version, identitySchemaVersion,type);
 			List<UISpecMetaDataDTO> fetchedSchema = prepareResponse(uiSchema);
-			response.setResponse(getLatestPublishedSchema(fetchedSchema));
+				response.setResponse(getLatestPublishedSchema(fetchedSchema));
 		} catch (UISpecException ex) {
 			log.error("Exception occured while fetching the UiSpec");
 			List<ExceptionJSONInfoDTO> explist = new ArrayList<ExceptionJSONInfoDTO>();

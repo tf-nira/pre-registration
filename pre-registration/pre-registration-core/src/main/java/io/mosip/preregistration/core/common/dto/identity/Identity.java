@@ -56,6 +56,9 @@ public class Identity implements Serializable {
 	
 	/** The Services */
 	private IdentityJsonValues userService;
+
+	/** The Nin */
+	private IdentityJsonValues nin;
 	
    /** The ServiceType */
 	private IdentityJsonValues userServiceType;

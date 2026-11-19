@@ -204,4 +204,9 @@ public class DocumentIdentity {
 
 	private IdentityJsonValues pocpl;
 
+	private IdentityJsonValues poifdr;
+
+	private IdentityJsonValues posde;
+
+	private IdentityJsonValues poalcl;
 }

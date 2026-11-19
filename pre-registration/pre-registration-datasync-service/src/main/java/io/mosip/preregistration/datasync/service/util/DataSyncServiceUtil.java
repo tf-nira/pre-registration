@@ -431,6 +431,15 @@ public class DataSyncServiceUtil {
 
 	@Value("${pocpl.url}")
 	private String pocplUrl;
+
+	@Value("${poifdr.url}")
+	private String poifdrUrl;
+
+	@Value("${posde.url}")
+	private String posdeUrl;
+
+	@Value("${poalcl.url}")
+	private String poalclUrl;
 	
 	/**
 	 * Reference for ${booking.resource.url} from property file
@@ -1081,6 +1090,16 @@ public class DataSyncServiceUtil {
 				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POCPL.getCode())) {
 					jsonObject.put(pocplUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
 				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POIFDR.getCode())) {
+					jsonObject.put(poifdrUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POSDE.getCode())) {
+					jsonObject.put(posdeUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+				else if (documentMultipartResponseDTO.getDocCatCode().equals(RequestCodes.POALCL.getCode())) {
+					jsonObject.put(poalclUrl, prepareDocumentMetaData(documentMultipartResponseDTO));
+				}
+
 
 				DocumentDTO documentDTO = getDocBytesDetails(documentMultipartResponseDTO.getDocumentId(), preId);
 				if (documentDTO != null && documentDTO.getDocument() != null) {
